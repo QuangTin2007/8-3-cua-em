@@ -127,10 +127,10 @@
 
     .hero-deco{display:none;}
     @media(min-width:768px){
-      .hero{align-items:flex-start;text-align:left;padding:0 clamp(2rem,8vw,8rem);}
-      .hero-title::after{left:0;transform:none;}
-      .hero-flowers,.hb-row,.hero-badge{justify-content:flex-start;}
-      .hero-sub{text-align:left;}
+  .hero{align-items:center;text-align:center;padding:0 clamp(2rem,8vw,8rem);}
+  .hero-title::after{left:50%;transform:translateX(-50%);}
+  .hero-flowers,.hb-row,.hero-badge{justify-content:center;}
+  .hero-sub{text-align:center;}
       .hero-deco{display:flex;position:absolute;right:clamp(2rem,5vw,5rem);top:50%;transform:translateY(-50%);flex-direction:column;align-items:center;gap:1.5rem;animation:fadeIn 2s ease 1.2s both;}
       .deco-ln{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(200,149,42,.28),transparent);}
       .deco-dt{width:4px;height:4px;border-radius:50%;background:rgba(200,149,42,.38);}
