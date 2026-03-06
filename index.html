@@ -31,6 +31,197 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 @keyframes spinSlow{to{transform:rotate(360deg);}}
 @keyframes numPop{0%{transform:scale(1);}40%{transform:scale(1.15);}100%{transform:scale(1);}}
 
+/* COUPLE ANIMATION */
+.couple-scene {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  animation: coupleAppear 2s ease 0.5s forwards;
+}
+@keyframes coupleAppear {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+.couple-figures {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(10px, 3vw, 20px);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+
+/* Boy figure */
+.boy {
+  position: relative;
+  animation: boySway 4s ease-in-out infinite;
+}
+@keyframes boySway {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.boy-body {
+  width: clamp(60px, 15vw, 80px);
+  height: clamp(100px, 25vw, 140px);
+  background: linear-gradient(180deg, #4a69bd 0%, #3c5aa6 100%);
+  border-radius: 20px 20px 5px 5px;
+  position: relative;
+}
+.boy-head {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(45px, 11vw, 60px);
+  height: clamp(45px, 11vw, 60px);
+  background: #fdbcb4;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+}
+.boy-hair {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(50px, 12vw, 65px);
+  height: 25px;
+  background: #2c1810;
+  border-radius: 50% 50% 0 0;
+}
+.boy-arm {
+  position: absolute;
+  right: -15px;
+  top: 20px;
+  width: clamp(20px, 5vw, 25px);
+  height: clamp(60px, 15vw, 80px);
+  background: #4a69bd;
+  border-radius: 10px;
+  transform: rotate(-30deg);
+  transform-origin: top center;
+  animation: armMove 3s ease-in-out infinite;
+}
+@keyframes armMove {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(-35deg); }
+}
+.boy-hand {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  width: clamp(18px, 4.5vw, 22px);
+  height: clamp(18px, 4.5vw, 22px);
+  background: #fdbcb4;
+  border-radius: 50%;
+}
+.flowers-bouquet {
+  position: absolute;
+  bottom: -15px;
+  right: -25px;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  transform: rotate(-15deg);
+  animation: flowerOffer 3s ease-in-out infinite;
+}
+@keyframes flowerOffer {
+  0%, 100% { transform: rotate(-15deg) translateX(0); }
+  50% { transform: rotate(-20deg) translateX(-5px); }
+}
+
+/* Girl figure */
+.girl {
+  position: relative;
+  animation: girlSway 4s ease-in-out infinite 0.5s;
+}
+@keyframes girlSway {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.girl-body {
+  width: clamp(60px, 15vw, 80px);
+  height: clamp(95px, 24vw, 130px);
+  background: linear-gradient(180deg, #ff6b9d 0%, #e8557c 100%);
+  border-radius: 20px 20px 40px 40px;
+  position: relative;
+}
+.girl-dress {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #ff6b9d 0%, #ff8fb3 100%);
+  border-radius: 10px 10px 40px 40px;
+  box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+}
+.girl-head {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(45px, 11vw, 60px);
+  height: clamp(45px, 11vw, 60px);
+  background: #fdbcb4;
+  border-radius: 50%;
+  box-shadow: inset -3px -3px 10px rgba(0,0,0,0.1);
+}
+.girl-hair {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(55px, 13vw, 70px);
+  height: clamp(65px, 16vw, 85px);
+  background: linear-gradient(180deg, #8b4513 0%, #a0522d 100%);
+  border-radius: 50% 50% 45% 45%;
+}
+.girl-hair::before {
+  content: '🌸';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+}
+.girl-arm {
+  position: absolute;
+  left: -10px;
+  top: 25px;
+  width: clamp(18px, 4.5vw, 22px);
+  height: clamp(50px, 12vw, 65px);
+  background: #fdbcb4;
+  border-radius: 10px;
+  transform: rotate(25deg);
+  transform-origin: top center;
+  animation: girlArmMove 3s ease-in-out infinite;
+}
+@keyframes girlArmMove {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(30deg); }
+}
+.heart-float {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  animation: heartFloat 2s ease-in-out infinite;
+}
+@keyframes heartFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+  50% { transform: translateX(-50%) translateY(-10px); opacity: 1; }
+}
+
+/* Specific positioning for hero page */
+.hero .couple-scene {
+  bottom: 8%;
+}
+
+/* Specific positioning for slideshow */
+#s0 .couple-scene {
+  bottom: 10%;
+  opacity: 0;
+  animation: coupleAppear 1.5s ease 0.8s forwards;
+}
+
 /* HERO */
 .hero{min-height:100svh;display:grid;align-items:center;justify-items:center;text-align:center;position:relative;z-index:2;padding:clamp(1.5rem,5vw,3rem) clamp(1rem,4vw,2rem);overflow:hidden;}
 .hero::before,.hero::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent 5%,rgba(200,149,42,.18) 30%,rgba(200,149,42,.35) 50%,rgba(200,149,42,.18) 70%,transparent 95%);pointer-events:none;}
@@ -47,7 +238,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .c-gem.tr .dot{top:0;right:0;transform:translate(50%,-50%);}
 .c-gem.bl .dot{bottom:0;left:0;transform:translate(-50%,50%);}
 .c-gem.br .dot{bottom:0;right:0;transform:translate(50%,50%);}
-.hero-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:540px;}
+.hero-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:540px;position:relative;z-index:5;}
 .flower-row{display:flex;justify-content:center;align-items:center;gap:clamp(.2rem,2vw,.55rem);font-size:clamp(1.4rem,5.5vw,2rem);margin-bottom:clamp(.5rem,2vw,.9rem);flex-wrap:wrap;}
 .flower-row span{display:inline-block;animation:sway 3s ease-in-out infinite;}
 .flower-row span:nth-child(2){animation-delay:.3s;}.flower-row span:nth-child(3){animation-delay:.6s;}.flower-row span:nth-child(4){animation-delay:.15s;}.flower-row span:nth-child(5){animation-delay:.45s;}.flower-row span:nth-child(6){animation-delay:.75s;}.flower-row span:nth-child(7){animation-delay:.25s;}.flower-row span:nth-child(8){animation-delay:.55s;}
@@ -106,7 +297,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .slide.exit-left{opacity:0;transform:translateX(-60px);pointer-events:none;}
 
 /* ══ ĐỒNG HỒ — 2 hàng ══ */
-.lc-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:96vw;width:100%;padding:0 .5rem;}
+.lc-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:96vw;width:100%;padding:0 .5rem;position:relative;z-index:5;}
 .lc-badge{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.3vw,.44rem);letter-spacing:.42em;text-transform:uppercase;color:rgba(200,149,42,.4);text-align:center;}
 .lc-title{font-family:'Great Vibes',cursive;font-size:clamp(1.9rem,7.5vw,3.5rem);color:var(--cream);text-align:center;text-shadow:0 0 40px rgba(255,200,210,.12);line-height:1.1;}
 .lc-title span{color:var(--rose2);filter:drop-shadow(0 0 20px rgba(232,48,90,.6));}
@@ -256,6 +447,33 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
   <div class="c-gem tr"><div class="dot"></div></div>
   <div class="c-gem bl"><div class="dot"></div></div>
   <div class="c-gem br"><div class="dot"></div></div>
+  
+  <!-- Couple Animation for Hero -->
+  <div class="couple-scene">
+    <div class="couple-figures">
+      <div class="boy">
+        <div class="boy-body"></div>
+        <div class="boy-head">
+          <div class="boy-hair"></div>
+        </div>
+        <div class="boy-arm">
+          <div class="boy-hand"></div>
+        </div>
+        <div class="flowers-bouquet">💐</div>
+      </div>
+      <div class="heart-float">💕</div>
+      <div class="girl">
+        <div class="girl-body">
+          <div class="girl-dress"></div>
+        </div>
+        <div class="girl-head">
+          <div class="girl-hair"></div>
+        </div>
+        <div class="girl-arm"></div>
+      </div>
+    </div>
+  </div>
+  
   <div class="hero-inner">
     <div class="flower-row">
       <span>🌹</span><span>🌸</span><span>🌺</span><span>🪷</span>
@@ -320,6 +538,32 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 
   <!-- SLIDE 0: đồng hồ đếm ngày — 2 hàng -->
   <div class="slide active" id="s0">
+    <!-- Couple Animation for Clock -->
+    <div class="couple-scene">
+      <div class="couple-figures">
+        <div class="boy">
+          <div class="boy-body"></div>
+          <div class="boy-head">
+            <div class="boy-hair"></div>
+          </div>
+          <div class="boy-arm">
+            <div class="boy-hand"></div>
+          </div>
+          <div class="flowers-bouquet">💐</div>
+        </div>
+        <div class="heart-float">💕</div>
+        <div class="girl">
+          <div class="girl-body">
+            <div class="girl-dress"></div>
+          </div>
+          <div class="girl-head">
+            <div class="girl-hair"></div>
+          </div>
+          <div class="girl-arm"></div>
+        </div>
+      </div>
+    </div>
+    
     <div class="lc-wrap">
       <div class="lc-badge">✦ Chúng Mình Đã Bên Nhau ✦</div>
       <div class="lc-title">Tình Yêu Của <span>Chúng Ta</span> 💕</div>
