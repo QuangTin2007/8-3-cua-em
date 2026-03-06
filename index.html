@@ -16,22 +16,17 @@
     html{scroll-behavior:smooth;}
     body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;min-height:100vh;}
 
-    /* ── AMBIENT ── */
     #amb{position:fixed;inset:0;pointer-events:none;z-index:0;}
     #amb::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 55% at 50% 0%,rgba(176,31,66,.28) 0%,transparent 65%),radial-gradient(ellipse 70% 50% at 15% 60%,rgba(200,149,42,.13) 0%,transparent 65%),radial-gradient(ellipse 70% 50% at 85% 60%,rgba(176,31,66,.13) 0%,transparent 65%),radial-gradient(ellipse 90% 40% at 50% 100%,rgba(200,149,42,.1) 0%,transparent 65%);animation:ambPulse 8s ease-in-out infinite;}
     @keyframes ambPulse{0%,100%{opacity:.7;}50%{opacity:1;}}
-
     #stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
     .star{position:absolute;background:#fff;border-radius:50%;animation:tw linear infinite;}
     @keyframes tw{0%,100%{opacity:.02;}50%{opacity:.85;}}
-
     #petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
     .petal{position:absolute;top:-60px;animation:fl linear infinite;opacity:0;}
     @keyframes fl{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0;}5%{opacity:.9;}50%{transform:translateY(52vh) rotate(200deg) translateX(18px);}90%{opacity:.4;}100%{transform:translateY(112vh) rotate(420deg) translateX(-15px);opacity:0;}}
-
     .sparkle{position:fixed;pointer-events:none;z-index:9997;animation:sp .9s ease forwards;}
     @keyframes sp{0%{opacity:1;transform:translate(0,0) scale(1.3);}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0);}}
-
     .flash{position:fixed;inset:0;pointer-events:none;z-index:350;opacity:0;}
     .flash.go{animation:flG .8s ease forwards;}
     @keyframes flG{0%{opacity:0;}35%{opacity:1;background:radial-gradient(ellipse at center,rgba(232,48,90,.22),rgba(200,149,42,.07) 40%,transparent 70%);}100%{opacity:0;}}
@@ -89,209 +84,41 @@
     @keyframes sAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
     .scroll-hint span{font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(200,149,42,.5);}
 
-    /* ══ ĐẾM NGÀY YÊU ══ */
-    .love-counter{
-      position:relative;z-index:2;
-      padding:clamp(2.5rem,7vw,4.5rem) clamp(1rem,4vw,2rem);
-      display:flex;flex-direction:column;align-items:center;
-      border-top:1px solid rgba(200,149,42,.08);
-      overflow:hidden;
-    }
-    .love-counter::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(176,31,66,.08) 0%,transparent 70%);
-      pointer-events:none;
-    }
-    .lc-label{
-      font-family:'Cinzel',serif;
-      font-size:clamp(.42rem,1.6vw,.52rem);
-      letter-spacing:.45em;text-transform:uppercase;
-      color:rgba(200,149,42,.38);
-      margin-bottom:clamp(.8rem,2.5vw,1.2rem);
-      animation:fadeUp .6s ease both;
-    }
-    .lc-title{
-      font-family:'Great Vibes',cursive;
-      font-size:clamp(1.8rem,7vw,3.2rem);
-      color:var(--cream);
-      margin-bottom:clamp(1.2rem,4vw,2rem);
-      text-shadow:0 0 40px rgba(255,200,210,.1);
-      animation:fadeUp .6s ease .1s both;
-    }
-    .lc-boxes{
-      display:flex;gap:clamp(.5rem,2.5vw,1.2rem);
-      flex-wrap:wrap;justify-content:center;
-      margin-bottom:clamp(1rem,3vw,1.8rem);
-      animation:fadeUp .6s ease .2s both;
-    }
-    .lc-box{
-      display:flex;flex-direction:column;align-items:center;
-      background:linear-gradient(135deg,rgba(176,31,66,.12),rgba(200,149,42,.06));
-      border:1px solid rgba(200,149,42,.2);
-      padding:clamp(.7rem,2.5vw,1.1rem) clamp(.9rem,3vw,1.5rem);
-      min-width:clamp(64px,18vw,90px);
-      position:relative;
-      box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);
-    }
-    .lc-box::before{content:'◆';position:absolute;top:.28rem;left:50%;transform:translateX(-50%);font-size:.28rem;color:rgba(200,149,42,.3);}
-    .lc-num{
-      font-family:'Cinzel',serif;
-      font-size:clamp(1.8rem,7vw,3rem);
-      font-weight:600;
-      color:var(--gold2);
-      line-height:1;
-      text-shadow:0 0 20px rgba(200,149,42,.5);
-      animation:numPulse 2s ease-in-out infinite;
-    }
-    .lc-box:nth-child(2) .lc-num{color:var(--rose3);text-shadow:0 0 20px rgba(255,112,150,.5);animation-delay:.3s;}
-    .lc-box:nth-child(3) .lc-num{color:var(--blush);text-shadow:0 0 20px rgba(244,167,185,.4);animation-delay:.6s;}
-    .lc-box:nth-child(4) .lc-num{color:var(--gold3);text-shadow:0 0 20px rgba(255,232,160,.4);animation-delay:.9s;}
-    @keyframes numPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
-    .lc-unit{
-      font-family:'Cinzel',serif;
-      font-size:clamp(.36rem,1.3vw,.44rem);
-      letter-spacing:.28em;text-transform:uppercase;
-      color:rgba(200,149,42,.38);
-      margin-top:.35rem;
-    }
-    .lc-divider{
-      font-size:clamp(1.2rem,4vw,1.8rem);
-      color:rgba(232,48,90,.3);
-      align-self:center;
-      margin-bottom:.5rem;
-      animation:heartbeat 1.6s ease-in-out infinite;
-    }
-    .lc-since{
-      font-family:'Playfair Display',serif;
-      font-size:clamp(.72rem,2.8vw,.88rem);
-      font-style:italic;
-      color:rgba(244,167,185,.28);
-      margin-top:.2rem;
-      animation:fadeUp .6s ease .3s both;
-    }
-    .lc-heart-row{
-      display:flex;gap:.4rem;margin-top:clamp(.8rem,2.5vw,1.2rem);
-      animation:fadeUp .6s ease .4s both;
-    }
-    .lc-heart-row span{font-size:.85rem;display:inline-block;animation:heartbeat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(232,48,90,.6));}
-    .lc-heart-row span:nth-child(2){animation-delay:.2s;font-size:.65rem;}
-    .lc-heart-row span:nth-child(3){animation-delay:.4s;}
-    .lc-heart-row span:nth-child(4){animation-delay:.2s;font-size:.65rem;}
-    .lc-heart-row span:nth-child(5){animation-delay:.4s;}
-
     /* ══ QUOTE ══ */
     .quote-strip{position:relative;z-index:2;padding:clamp(1.4rem,4vw,2.4rem) clamp(1rem,4vw,2rem);border-top:1px solid rgba(200,149,42,.08);border-bottom:1px solid rgba(200,149,42,.08);display:flex;justify-content:center;align-items:center;gap:clamp(.4rem,1.5vw,.9rem);}
     .q-mark{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,7vw,4rem);color:rgba(200,149,42,.08);line-height:1;flex-shrink:0;}
     .quote-inner{font-family:'Playfair Display',serif;font-size:clamp(.74rem,2.8vw,.92rem);font-style:italic;color:rgba(244,167,185,.34);max-width:290px;line-height:1.82;text-align:center;}
     .quote-name{display:block;margin-top:.4rem;font-family:'Great Vibes',cursive;font-size:clamp(1rem,3.5vw,1.35rem);color:rgba(200,149,42,.34);font-style:normal;}
 
-    /* ══ TIMELINE SECTION ══ */
-    .timeline-section{
-      position:relative;z-index:2;
-      padding:clamp(2.5rem,7vw,5rem) clamp(1rem,4vw,2rem);
-      border-top:1px solid rgba(200,149,42,.08);
-      overflow:hidden;
-    }
-    .timeline-section::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 90% 50% at 50% 30%,rgba(176,31,66,.06) 0%,transparent 70%);
-      pointer-events:none;
-    }
+    /* ══ TIMELINE NGOÀI ══ */
+    .timeline-section{position:relative;z-index:2;padding:clamp(2.5rem,7vw,5rem) clamp(1rem,4vw,2rem);border-top:1px solid rgba(200,149,42,.08);overflow:hidden;}
+    .timeline-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 50% at 50% 30%,rgba(176,31,66,.06) 0%,transparent 70%);pointer-events:none;}
     .tl-header{text-align:center;margin-bottom:clamp(2rem,6vw,3.5rem);}
     .tl-badge{font-family:'Cinzel',serif;font-size:clamp(.42rem,1.6vw,.52rem);letter-spacing:.45em;text-transform:uppercase;color:rgba(200,149,42,.38);display:block;margin-bottom:.6rem;}
     .tl-title{font-family:'Great Vibes',cursive;font-size:clamp(2rem,8vw,3.8rem);color:var(--cream);text-shadow:0 0 40px rgba(255,200,210,.1);}
     .tl-title span{color:var(--rose2);filter:drop-shadow(0 0 18px rgba(232,48,90,.5));}
     .tl-sub{font-family:'Playfair Display',serif;font-size:clamp(.72rem,2.8vw,.88rem);font-style:italic;color:rgba(244,167,185,.28);margin-top:.4rem;}
-
-    /* Timeline vertical line */
     .tl-line-wrap{position:relative;max-width:680px;margin:0 auto;}
     .tl-spine{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(200,149,42,.2) 10%,rgba(200,149,42,.2) 90%,transparent);transform:translateX(-50%);}
     @media(max-width:600px){.tl-spine{left:20px;}}
-
-    /* Timeline item */
-    .tl-item{
-      display:flex;
-      align-items:flex-start;
-      gap:clamp(1rem,3vw,2rem);
-      margin-bottom:clamp(2rem,6vw,3.5rem);
-      position:relative;
-    }
+    .tl-item{display:flex;align-items:flex-start;gap:clamp(1rem,3vw,2rem);margin-bottom:clamp(2rem,6vw,3.5rem);position:relative;opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s cubic-bezier(.34,1.4,.64,1);}
+    .tl-item.visible{opacity:1;transform:translateY(0);}
     .tl-item:nth-child(odd){flex-direction:row;}
     .tl-item:nth-child(even){flex-direction:row-reverse;}
-    @media(max-width:600px){
-      .tl-item:nth-child(odd),.tl-item:nth-child(even){flex-direction:row;padding-left:44px;}
-    }
-
-    /* Dot on spine */
-    .tl-dot{
-      position:absolute;left:50%;top:clamp(60px,18vw,90px);
-      width:12px;height:12px;border-radius:50%;
-      background:radial-gradient(circle,var(--gold2),var(--gold));
-      border:2px solid rgba(200,149,42,.5);
-      transform:translate(-50%,-50%);
-      box-shadow:0 0 12px rgba(200,149,42,.7);
-      flex-shrink:0;z-index:2;
-      animation:dotGlow 2s ease-in-out infinite;
-    }
+    @media(max-width:600px){.tl-item:nth-child(odd),.tl-item:nth-child(even){flex-direction:row;padding-left:44px;}}
+    .tl-dot{position:absolute;left:50%;top:clamp(60px,18vw,90px);width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,var(--gold2),var(--gold));border:2px solid rgba(200,149,42,.5);transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(200,149,42,.7);flex-shrink:0;z-index:2;animation:dotGlow 2s ease-in-out infinite;}
     @keyframes dotGlow{0%,100%{box-shadow:0 0 8px rgba(200,149,42,.5);}50%{box-shadow:0 0 18px rgba(200,149,42,.9),0 0 30px rgba(200,149,42,.3);}}
     @media(max-width:600px){.tl-dot{left:20px;top:clamp(55px,16vw,80px);}}
-
-    /* Polaroid card */
-    .tl-card{
-      width:calc(50% - clamp(.5rem,2vw,1rem));
-      max-width:280px;
-      background:linear-gradient(145deg,#fdf8f2,#fef0f4);
-      padding:clamp(.6rem,2vw,1rem) clamp(.6rem,2vw,1rem) clamp(1rem,3vw,1.4rem);
-      box-shadow:0 18px 50px rgba(0,0,0,.55),0 4px 15px rgba(176,31,66,.2),inset 0 1px 0 rgba(255,255,255,.9);
-      position:relative;
-      transform:rotate(var(--rot,0deg));
-      transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;
-      cursor:pointer;
-    }
+    .tl-card{width:calc(50% - clamp(.5rem,2vw,1rem));max-width:280px;background:linear-gradient(145deg,#fdf8f2,#fef0f4);padding:clamp(.6rem,2vw,1rem) clamp(.6rem,2vw,1rem) clamp(1rem,3vw,1.4rem);box-shadow:0 18px 50px rgba(0,0,0,.55),0 4px 15px rgba(176,31,66,.2);position:relative;transform:rotate(var(--rot,0deg));transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;cursor:pointer;}
     .tl-card:hover{transform:rotate(0deg) scale(1.04);box-shadow:0 28px 70px rgba(0,0,0,.65),0 6px 25px rgba(176,31,66,.3);}
-    .tl-item:nth-child(1) .tl-card{--rot:-2.5deg;}
-    .tl-item:nth-child(2) .tl-card{--rot:2deg;}
-    .tl-item:nth-child(3) .tl-card{--rot:-1.8deg;}
-    .tl-item:nth-child(4) .tl-card{--rot:2.8deg;}
+    .tl-item:nth-child(1) .tl-card{--rot:-2.5deg;}.tl-item:nth-child(2) .tl-card{--rot:2deg;}.tl-item:nth-child(3) .tl-card{--rot:-1.8deg;}.tl-item:nth-child(4) .tl-card{--rot:2.8deg;}
     @media(max-width:600px){.tl-card{width:100%;max-width:100%;}}
-
-    .tl-photo{
-      width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      display:block;
-      filter:sepia(.08) contrast(1.04) brightness(1.02);
-    }
-    .tl-num{
-      position:absolute;top:.5rem;right:.6rem;
-      font-family:'Cinzel',serif;
-      font-size:.38rem;letter-spacing:.28em;
-      color:rgba(176,31,66,.28);
-      text-transform:uppercase;
-    }
-    .tl-caption{
-      font-family:'Cormorant Garamond',Georgia,serif;
-      font-size:clamp(.72rem,2.8vw,.82rem);
-      color:#3a0f1a;
-      font-style:italic;
-      line-height:1.7;
-      margin-top:clamp(.5rem,1.5vw,.75rem);
-      text-align:center;
-    }
-    .tl-heart{
-      display:block;text-align:center;
-      font-size:.8rem;margin-top:.4rem;
-      color:rgba(176,31,66,.4);
-      animation:heartbeat 1.6s ease-in-out infinite;
-    }
-
-    /* Empty side spacer */
+    .tl-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.08) contrast(1.04) brightness(1.02);}
+    .tl-num{position:absolute;top:.5rem;right:.6rem;font-family:'Cinzel',serif;font-size:.38rem;letter-spacing:.28em;color:rgba(176,31,66,.28);text-transform:uppercase;}
+    .tl-caption{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.72rem,2.8vw,.82rem);color:#3a0f1a;font-style:italic;line-height:1.7;margin-top:clamp(.5rem,1.5vw,.75rem);text-align:center;}
+    .tl-heart{display:block;text-align:center;font-size:.8rem;margin-top:.4rem;color:rgba(176,31,66,.4);animation:heartbeat 1.6s ease-in-out infinite;}
     .tl-spacer{width:calc(50% - clamp(.5rem,2vw,1rem));}
     @media(max-width:600px){.tl-spacer{display:none;}}
-
-    /* Scroll reveal */
-    .tl-item{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s cubic-bezier(.34,1.4,.64,1);}
-    .tl-item.visible{opacity:1;transform:translateY(0);}
 
     /* ══ PASSWORD ══ */
     #pwOverlay{position:fixed;inset:0;background:rgba(4,0,8,.97);backdrop-filter:blur(24px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .4s ease;}
@@ -319,6 +146,132 @@
     .num-ok{border-color:rgba(200,149,42,.26);color:var(--gold2);}
     .pw-hint{font-family:'Playfair Display',serif;font-size:clamp(.6rem,.75vw,.68rem);font-style:italic;color:rgba(244,167,185,.18);}
     .pw-error-msg{font-size:.74rem;color:#ff8888;margin-top:.4rem;min-height:1em;font-style:italic;}
+
+    /* ══ SLIDESHOW SAU MẬT KHẨU ══ */
+    #slideshow{
+      position:fixed;inset:0;z-index:300;
+      background:rgba(4,0,8,.98);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity .5s ease;
+      overflow:hidden;
+      padding:1rem;
+    }
+    #slideshow.show{opacity:1;pointer-events:all;}
+
+    /* Slide container */
+    .slide{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:clamp(1rem,4vw,2rem);
+      opacity:0;pointer-events:none;
+      transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.4,.64,1);
+      transform:translateX(60px);
+    }
+    .slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
+    .slide.exit{opacity:0;transform:translateX(-60px);}
+
+    /* Slide 0 — Đếm ngày */
+    .lc-wrap{
+      display:flex;flex-direction:column;align-items:center;
+      gap:clamp(.5rem,2vw,1rem);
+      max-width:500px;width:100%;
+    }
+    .lc-badge{font-family:'Cinzel',serif;font-size:clamp(.38rem,1.4vw,.48rem);letter-spacing:.42em;text-transform:uppercase;color:rgba(200,149,42,.4);}
+    .lc-main-title{font-family:'Great Vibes',cursive;font-size:clamp(2rem,8vw,4rem);color:var(--cream);text-align:center;text-shadow:0 0 40px rgba(255,200,210,.12);}
+    .lc-main-title span{color:var(--rose2);filter:drop-shadow(0 0 20px rgba(232,48,90,.6));}
+    .lc-boxes{display:flex;gap:clamp(.4rem,2vw,1rem);flex-wrap:wrap;justify-content:center;}
+    .lc-box{
+      display:flex;flex-direction:column;align-items:center;
+      background:linear-gradient(135deg,rgba(176,31,66,.14),rgba(200,149,42,.07));
+      border:1px solid rgba(200,149,42,.22);
+      padding:clamp(.7rem,2.5vw,1.1rem) clamp(.9rem,3vw,1.5rem);
+      min-width:clamp(60px,16vw,85px);
+      box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);
+      position:relative;
+    }
+    .lc-box::before{content:'◆';position:absolute;top:.28rem;left:50%;transform:translateX(-50%);font-size:.28rem;color:rgba(200,149,42,.28);}
+    .lc-num{font-family:'Cinzel',serif;font-size:clamp(1.8rem,7vw,3rem);font-weight:600;color:var(--gold2);line-height:1;text-shadow:0 0 20px rgba(200,149,42,.5);}
+    .lc-box:nth-child(2) .lc-num{color:var(--rose3);}
+    .lc-box:nth-child(3) .lc-num{color:var(--blush);}
+    .lc-box:nth-child(4) .lc-num{color:var(--gold3);}
+    .lc-unit{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.2vw,.42rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(200,149,42,.35);margin-top:.35rem;}
+    .lc-divider-heart{font-size:clamp(1rem,3.5vw,1.4rem);color:rgba(232,48,90,.3);align-self:center;margin-bottom:.4rem;animation:heartbeat 1.6s ease-in-out infinite;}
+    .lc-since{font-family:'Playfair Display',serif;font-size:clamp(.7rem,2.6vw,.85rem);font-style:italic;color:rgba(244,167,185,.25);text-align:center;}
+    .lc-hearts{display:flex;gap:.38rem;justify-content:center;}
+    .lc-hearts span{font-size:.85rem;display:inline-block;animation:heartbeat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(232,48,90,.6));}
+    .lc-hearts span:nth-child(2){animation-delay:.2s;font-size:.65rem;}
+    .lc-hearts span:nth-child(3){animation-delay:.4s;}
+    .lc-hearts span:nth-child(4){animation-delay:.2s;font-size:.65rem;}
+    .lc-hearts span:nth-child(5){animation-delay:.4s;}
+
+    /* Slide 1-4 — Ảnh kỷ niệm */
+    .mem-slide{display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,2vw,1rem);max-width:360px;width:100%;}
+    .mem-num-badge{
+      font-family:'Cinzel',serif;font-size:clamp(.38rem,1.4vw,.46rem);
+      letter-spacing:.38em;text-transform:uppercase;
+      color:rgba(200,149,42,.38);
+    }
+    .mem-title{
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(1.5rem,6vw,2.6rem);
+      color:var(--cream);
+      text-align:center;
+      text-shadow:0 0 30px rgba(255,200,210,.1);
+    }
+    .mem-photo-wrap{
+      position:relative;
+      background:linear-gradient(145deg,#fdf8f2,#fef0f4);
+      padding:clamp(.5rem,2vw,.9rem) clamp(.5rem,2vw,.9rem) clamp(.9rem,3vw,1.3rem);
+      box-shadow:0 20px 55px rgba(0,0,0,.65),0 4px 18px rgba(176,31,66,.25);
+      transform:rotate(var(--pr,0deg));
+      transition:transform .4s;
+      width:100%;
+    }
+    .mem-photo-wrap:hover{transform:rotate(0deg) scale(1.02);}
+    .mem-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.06) contrast(1.04);}
+    .mem-caption{
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(.78rem,3vw,.92rem);
+      font-style:italic;
+      color:rgba(244,167,185,.55);
+      line-height:1.75;
+      text-align:center;
+      max-width:320px;
+      padding:0 .5rem;
+    }
+    .mem-heart{font-size:.85rem;color:rgba(232,48,90,.4);animation:heartbeat 1.6s ease-in-out infinite;display:block;text-align:center;}
+
+    /* Nút NEXT góc dưới phải */
+    #slideNext{
+      position:fixed;
+      bottom:clamp(1.2rem,4vw,2rem);
+      right:clamp(1.2rem,4vw,2rem);
+      z-index:9999;
+      width:clamp(48px,13vw,60px);height:clamp(48px,13vw,60px);
+      border-radius:50%;
+      background:linear-gradient(135deg,rgba(176,31,66,.5),rgba(200,149,42,.25));
+      border:1px solid rgba(200,149,42,.45);
+      color:var(--gold2);
+      font-size:clamp(1rem,4vw,1.3rem);
+      cursor:pointer;
+      display:none;
+      align-items:center;justify-content:center;
+      box-shadow:0 0 22px rgba(176,31,66,.4),0 0 45px rgba(200,149,42,.12);
+      transition:all .3s;
+      animation:nextPulse 2s ease-in-out infinite;
+    }
+    #slideNext.visible{display:flex;}
+    #slideNext:active{transform:scale(.9);}
+    @keyframes nextPulse{0%,100%{box-shadow:0 0 22px rgba(176,31,66,.4);}50%{box-shadow:0 0 35px rgba(176,31,66,.7),0 0 60px rgba(200,149,42,.2);}}
+
+    /* Progress dots */
+    #slideDots{
+      position:fixed;bottom:clamp(1.2rem,4vw,2rem);left:50%;transform:translateX(-50%);
+      z-index:9999;display:none;gap:.55rem;align-items:center;
+    }
+    #slideDots.visible{display:flex;}
+    .sdot{width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(200,149,42,.3);background:transparent;transition:all .35s;}
+    .sdot.on{background:var(--gold2);border-color:var(--gold2);box-shadow:0 0 8px rgba(200,149,42,.7);transform:scale(1.3);}
 
     /* ══ BOUQUET ══ */
     #bouquetOverlay{position:fixed;inset:0;z-index:400;background:radial-gradient(ellipse 90% 70% at 50% 42%,rgba(85,0,22,.97) 0%,rgba(4,0,8,.99) 60%);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s ease;overflow:hidden;gap:clamp(.6rem,2.5vw,1.2rem);padding:.8rem;}
@@ -361,6 +314,7 @@
     .wish-div{display:flex;align-items:center;gap:.5rem;width:min(200px,65vw);margin:0 auto .65rem;}
     .wish-div::before,.wish-div::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(200,149,42,.3),transparent);}
     .wish-div span{font-size:.7rem;color:rgba(200,149,42,.5);animation:spinSlow 5s linear infinite;}
+    @keyframes spinSlow{to{transform:rotate(360deg);}}
     .wish-text{font-family:'Playfair Display',serif;font-size:clamp(.76rem,3.2vw,.9rem);color:rgba(244,167,185,.55);font-style:italic;line-height:1.88;margin-bottom:1.1rem;max-width:295px;}
     .wish-hearts{display:flex;gap:.38rem;justify-content:center;margin-bottom:1.1rem;}
     .wish-hearts span{font-size:.92rem;display:inline-block;animation:hB 1.6s ease-in-out infinite;filter:drop-shadow(0 0 5px rgba(232,48,90,.75));}
@@ -435,18 +389,13 @@
     </div>
     <div class="hero-badge"><span class="bdot"></span>Ngày Quốc Tế Phụ Nữ<span class="bdot"></span></div>
     <div class="hero-roman">VIII · III · MMXXVI</div>
-    <h1 class="hero-title">
-      Chúc Mừng
-      <span class="hero-accent">8 Tháng 3</span>
-    </h1>
+    <h1 class="hero-title">Chúc Mừng<span class="hero-accent">8 Tháng 3</span></h1>
     <div class="hero-div"><span>✿</span></div>
     <p class="hero-sub">Dành tặng người con gái<br>đặc biệt của Tin nhé 🌹</p>
     <div class="hero-date">
-      <div class="d-line"></div>
-      <span class="d-heart">💗</span>
+      <div class="d-line"></div><span class="d-heart">💗</span>
       <div class="d-text">08 · 03 · 2026</div>
-      <span class="d-heart" style="animation-delay:.4s">💗</span>
-      <div class="d-line r"></div>
+      <span class="d-heart" style="animation-delay:.4s">💗</span><div class="d-line r"></div>
     </div>
     <button class="open-btn" id="openBtn">✉ &nbsp;Mở Thư Của Myy Tienn</button>
     <div class="flower-row-mid">
@@ -461,37 +410,6 @@
   <div class="scroll-hint"><div class="s-line"></div><span>scroll</span></div>
 </section>
 
-<!-- ═══ ĐẾM NGÀY YÊU ═══ -->
-<section class="love-counter">
-  <div class="lc-label">✦ Chúng mình đã bên nhau ✦</div>
-  <div class="lc-title">Tình Yêu Của Chúng Ta 💕</div>
-  <div class="lc-boxes">
-    <div class="lc-box">
-      <span class="lc-num" id="lc-days">0</span>
-      <span class="lc-unit">Ngày</span>
-    </div>
-    <div class="lc-divider">💗</div>
-    <div class="lc-box">
-      <span class="lc-num" id="lc-hours">0</span>
-      <span class="lc-unit">Giờ</span>
-    </div>
-    <div class="lc-divider">💗</div>
-    <div class="lc-box">
-      <span class="lc-num" id="lc-mins">0</span>
-      <span class="lc-unit">Phút</span>
-    </div>
-    <div class="lc-divider">💗</div>
-    <div class="lc-box">
-      <span class="lc-num" id="lc-secs">0</span>
-      <span class="lc-unit">Giây</span>
-    </div>
-  </div>
-  <div class="lc-since">Kể từ ngày 31 · 10 · 2025 🌹</div>
-  <div class="lc-heart-row">
-    <span>💗</span><span>🌸</span><span>💗</span><span>🌸</span><span>💗</span>
-  </div>
-</section>
-
 <!-- ═══ QUOTE ═══ -->
 <div class="quote-strip">
   <span class="q-mark">"</span>
@@ -499,65 +417,55 @@
   <span class="q-mark">"</span>
 </div>
 
-<!-- ═══ TIMELINE KỶ NIỆM ═══ -->
+<!-- ═══ TIMELINE NGOÀI ═══ -->
 <section class="timeline-section">
   <div class="tl-header">
     <span class="tl-badge">✦ Những Khoảnh Khắc Đáng Nhớ ✦</span>
-    <div class="tl-title">Ký Ức Của <span>Chúng Mình</span></div>
+    <div class="tl-title">Một Số <span>Kỉ Niệm Nhỏ</span></div>
     <div class="tl-sub">Mỗi khoảnh khắc bên em đều là một kỷ niệm anh trân trọng 🌹</div>
   </div>
-
   <div class="tl-line-wrap">
     <div class="tl-spine"></div>
-
-    <!-- Item 1 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="tl-num">01 · Kỷ niệm</div>
-        <img class="tl-photo" src="https://i.ibb.co/Pzg0wdLj/z7594705602761-f7b3247ae28597dcd208e17f7d1b9acf.jpg" alt="Patin cùng nhau" loading="lazy">
+        <img class="tl-photo" src="https://i.ibb.co/Pzg0wdLj/z7594705602761-f7b3247ae28597dcd208e17f7d1b9acf.jpg" alt="Patin" loading="lazy">
         <div class="tl-caption">Chúng ta đã cùng nhau trượt patin xuống quảng trường nhỏ, lúc đấy anh rất vui vì đã chỉ cho em cách đi patin và được nắm tay lần đầu tiên nhờ bộ môn này kkk</div>
         <span class="tl-heart">🌸</span>
       </div>
       <div class="tl-spacer"></div>
     </div>
-
-    <!-- Item 2 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-spacer"></div>
       <div class="tl-card">
         <div class="tl-num">02 · Kỷ niệm</div>
-        <img class="tl-photo" src="https://i.ibb.co/qM0F8V39/z7594705600002-cbd9f3e184091b579a4775277ae6b476.jpg" alt="Cafe cùng nhau" loading="lazy">
+        <img class="tl-photo" src="https://i.ibb.co/qM0F8V39/z7594705600002-cbd9f3e184091b579a4775277ae6b476.jpg" alt="Cafe" loading="lazy">
         <div class="tl-caption">Lần đầu tiên chở em đi quán cafe nào mà xa đến vậy và lúc đó anh rất vui vì được ở bên em nma tiếc thay không được ngửi mùi sữa =))</div>
         <span class="tl-heart">💗</span>
       </div>
     </div>
-
-    <!-- Item 3 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="tl-num">03 · Kỷ niệm</div>
-        <img class="tl-photo" src="https://i.ibb.co/bRBzTzCV/z7594705601879-116a22596807f968493902afbe578b8f.jpg" alt="Bóng chuyền sáng sớm" loading="lazy">
+        <img class="tl-photo" src="https://i.ibb.co/bRBzTzCV/z7594705601879-116a22596807f968493902afbe578b8f.jpg" alt="Bóng chuyền" loading="lazy">
         <div class="tl-caption">Lần đầu chúng ta cùng nhau đánh bóng chuyền buổi sáng, quả thật rất vui, lúc đó anh cũng không nghĩ là dậy nổi kkk mà giờ dậy không nổi thật =))))</div>
         <span class="tl-heart">🌺</span>
       </div>
       <div class="tl-spacer"></div>
     </div>
-
-    <!-- Item 4 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-spacer"></div>
       <div class="tl-card">
         <div class="tl-num">04 · Kỷ niệm</div>
-        <img class="tl-photo" src="https://i.ibb.co/xKXShGY8/z7594705602000-973a4d8bfd7141f4e2fd0f2a28214adb.jpg" alt="Ngồi ở cảng" loading="lazy">
+        <img class="tl-photo" src="https://i.ibb.co/xKXShGY8/z7594705602000-973a4d8bfd7141f4e2fd0f2a28214adb.jpg" alt="Cảng" loading="lazy">
         <div class="tl-caption">Đây là lần đầu tiên xuống ngồi ở dưới cảng mà anh có thể tự tin đi kể hoặc bắt chuyện ở ngoài đời trơn tru đến zậy á, cảm ơn em đã cho anh cơ hội nhé</div>
         <span class="tl-heart">🪷</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -585,10 +493,98 @@
   </div>
 </div>
 
+<!-- ═══ SLIDESHOW SAU MẬT KHẨU ═══ -->
+<div id="slideshow">
+
+  <!-- Slide 0: Đếm ngày yêu -->
+  <div class="slide active" id="slide-0">
+    <div class="lc-wrap">
+      <div class="lc-badge">✦ Chúng Mình Đã Bên Nhau ✦</div>
+      <div class="lc-main-title">Tình Yêu Của<br><span>Chúng Ta</span> 💕</div>
+      <div class="lc-boxes">
+        <div class="lc-box"><span class="lc-num" id="lc-days">0</span><span class="lc-unit">Ngày</span></div>
+        <div class="lc-divider-heart">💗</div>
+        <div class="lc-box"><span class="lc-num" id="lc-hours">00</span><span class="lc-unit">Giờ</span></div>
+        <div class="lc-divider-heart">💗</div>
+        <div class="lc-box"><span class="lc-num" id="lc-mins">00</span><span class="lc-unit">Phút</span></div>
+        <div class="lc-divider-heart">💗</div>
+        <div class="lc-box"><span class="lc-num" id="lc-secs">00</span><span class="lc-unit">Giây</span></div>
+      </div>
+      <div class="lc-since">Kể từ ngày 01 · 01 · 2026 🌹</div>
+      <div class="lc-hearts">
+        <span>💗</span><span>🌸</span><span>💗</span><span>🌸</span><span>💗</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 1: Ảnh 1 -->
+  <div class="slide" id="slide-1">
+    <div class="mem-slide">
+      <div class="mem-num-badge">✦ Kỷ Niệm 01 ✦</div>
+      <div class="mem-title">Patin Cùng Nhau 🛼</div>
+      <div class="mem-photo-wrap" style="--pr:-2.5deg">
+        <img class="mem-photo" src="https://i.ibb.co/Pzg0wdLj/z7594705602761-f7b3247ae28597dcd208e17f7d1b9acf.jpg" alt="Patin">
+      </div>
+      <div class="mem-caption">Chúng ta đã cùng nhau trượt patin xuống quảng trường nhỏ, lúc đấy anh rất vui vì đã chỉ cho em cách đi patin và được nắm tay lần đầu tiên nhờ bộ môn này kkk</div>
+      <span class="mem-heart">🌸</span>
+    </div>
+  </div>
+
+  <!-- Slide 2: Ảnh 2 -->
+  <div class="slide" id="slide-2">
+    <div class="mem-slide">
+      <div class="mem-num-badge">✦ Kỷ Niệm 02 ✦</div>
+      <div class="mem-title">Cafe Xa Xa ☕</div>
+      <div class="mem-photo-wrap" style="--pr:2deg">
+        <img class="mem-photo" src="https://i.ibb.co/qM0F8V39/z7594705600002-cbd9f3e184091b579a4775277ae6b476.jpg" alt="Cafe">
+      </div>
+      <div class="mem-caption">Lần đầu tiên chở em đi quán cafe nào mà xa đến vậy và lúc đó anh rất vui vì được ở bên em nma tiếc thay không được ngửi mùi sữa =))</div>
+      <span class="mem-heart">💗</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: Ảnh 3 -->
+  <div class="slide" id="slide-3">
+    <div class="mem-slide">
+      <div class="mem-num-badge">✦ Kỷ Niệm 03 ✦</div>
+      <div class="mem-title">Bóng Chuyền Sáng Sớm 🏐</div>
+      <div class="mem-photo-wrap" style="--pr:-1.8deg">
+        <img class="mem-photo" src="https://i.ibb.co/bRBzTzCV/z7594705601879-116a22596807f968493902afbe578b8f.jpg" alt="Bóng chuyền">
+      </div>
+      <div class="mem-caption">Lần đầu chúng ta cùng nhau đánh bóng chuyền buổi sáng, quả thật rất vui, lúc đó anh cũng không nghĩ là dậy nổi kkk mà giờ dậy không nổi thật =))))</div>
+      <span class="mem-heart">🌺</span>
+    </div>
+  </div>
+
+  <!-- Slide 4: Ảnh 4 -->
+  <div class="slide" id="slide-4">
+    <div class="mem-slide">
+      <div class="mem-num-badge">✦ Kỷ Niệm 04 ✦</div>
+      <div class="mem-title">Ngồi Ở Cảng 🌊</div>
+      <div class="mem-photo-wrap" style="--pr:2.8deg">
+        <img class="mem-photo" src="https://i.ibb.co/xKXShGY8/z7594705602000-973a4d8bfd7141f4e2fd0f2a28214adb.jpg" alt="Cảng">
+      </div>
+      <div class="mem-caption">Đây là lần đầu tiên xuống ngồi ở dưới cảng mà anh có thể tự tin đi kể hoặc bắt chuyện ở ngoài đời trơn tru đến zậy á, cảm ơn em đã cho anh cơ hội nhé</div>
+      <span class="mem-heart">🪷</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Nút NEXT -->
+<button id="slideNext" class="visible">›</button>
+<!-- Progress dots -->
+<div id="slideDots" class="visible">
+  <div class="sdot on" id="sd0"></div>
+  <div class="sdot" id="sd1"></div>
+  <div class="sdot" id="sd2"></div>
+  <div class="sdot" id="sd3"></div>
+  <div class="sdot" id="sd4"></div>
+</div>
+
 <!-- ═══ BOUQUET ═══ -->
 <div id="bouquetOverlay">
-  <div class="bq-rays"></div>
-  <div class="bq-glow"></div>
+  <div class="bq-rays"></div><div class="bq-glow"></div>
   <div id="bqFlower" data-tap="0">
     <svg class="bouquet-svg" viewBox="0 0 280 330" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -767,37 +763,51 @@
 </div>
 
 <script>
-  const SECRET='2703', MAX_TAPS=5;
+  const SECRET='2703', MAX_TAPS=5, TOTAL_SLIDES=5;
 
-  // ── ĐẾM NGÀY YÊU ──
-  // Đổi ngày này thành ngày bắt đầu yêu nhau thật sự của bạn
-  const START = new Date('2025-10-31T00:00:00');
+  // ── ĐẾM NGÀY ──
+  const START = new Date('2026-01-01T00:00:00');
   function updateCounter(){
-    const now = new Date();
-    const diff = now - START;
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const secs = Math.floor((diff % (1000*60)) / 1000);
-    document.getElementById('lc-days').textContent = days;
-    document.getElementById('lc-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('lc-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('lc-secs').textContent = String(secs).padStart(2,'0');
+    const diff = Date.now() - START;
+    if(diff < 0){ document.getElementById('lc-days').textContent='0'; return; }
+    document.getElementById('lc-days').textContent = Math.floor(diff/(1000*60*60*24));
+    document.getElementById('lc-hours').textContent = String(Math.floor((diff%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+    document.getElementById('lc-mins').textContent = String(Math.floor((diff%(1000*60*60))/(1000*60))).padStart(2,'0');
+    document.getElementById('lc-secs').textContent = String(Math.floor((diff%(1000*60))/1000)).padStart(2,'0');
   }
   updateCounter();
-  setInterval(updateCounter, 1000);
+  setInterval(updateCounter,1000);
 
-  // ── SCROLL REVEAL TIMELINE ──
-  const tlItems = document.querySelectorAll('.tl-item');
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach((entry,i)=>{
-      if(entry.isIntersecting){
-        setTimeout(()=>entry.target.classList.add('visible'), i*120);
-        observer.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.15});
-  tlItems.forEach(item=>observer.observe(item));
+  // ── SLIDESHOW ──
+  const ssEl = document.getElementById('slideshow');
+  const nextBtn = document.getElementById('slideNext');
+  const dotsEl = document.getElementById('slideDots');
+  let curSlide = 0;
+
+  function goSlide(n){
+    const slides = document.querySelectorAll('.slide');
+    slides[curSlide].classList.remove('active');
+    slides[curSlide].classList.add('exit');
+    setTimeout(()=>slides[curSlide].classList.remove('exit'),650);
+    curSlide = n;
+    slides[curSlide].classList.add('active');
+    // update dots
+    document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===curSlide));
+    // last slide → ẩn next, hiện bouquet
+    if(curSlide === TOTAL_SLIDES - 1){
+      nextBtn.style.opacity='0';
+      setTimeout(()=>{
+        nextBtn.classList.remove('visible');
+        dotsEl.classList.remove('visible');
+        ssEl.classList.remove('show');
+        showBouquet();
+      },900);
+    }
+  }
+
+  nextBtn.addEventListener('click',()=>{
+    if(curSlide < TOTAL_SLIDES - 1) goSlide(curSlide + 1);
+  });
 
   // ── STARS ──
   const stEl=document.getElementById('stars');
@@ -810,9 +820,8 @@
 
   // ── PETALS ──
   const ptEl=document.getElementById('petals');
-  const sym=['🌸','🌺','🌹','🪷','🌼','🌷','💐','🌸','🌹'];
-  const pc=window.innerWidth<600?22:40;
-  for(let i=0;i<pc;i++){
+  const sym=['🌸','🌺','🌹','🪷','🌼','🌷','💐'];
+  for(let i=0;i<(window.innerWidth<600?22:40);i++){
     const p=document.createElement('div');p.className='petal';
     p.textContent=sym[Math.floor(Math.random()*sym.length)];
     p.style.cssText=`left:${Math.random()*100}%;font-size:${.55+Math.random()*.9}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*15}s;`;
@@ -871,7 +880,7 @@
     @keyframes eO{0%{transform:scale(1);opacity:1;}35%{transform:scale(1.32);opacity:1;}100%{transform:scale(0);opacity:0;}}
   </style>`);
 
-  // ── TAP BOUQUET ──
+  // ── BOUQUET ──
   let tapCount=0,busy=false;
   const bqOv=document.getElementById('bouquetOverlay');
   const bqFlower=document.getElementById('bqFlower');
@@ -919,6 +928,13 @@
     setTimeout(()=>{bqFlower.classList.add('in');confetti(45);},250);
   }
 
+  // ── SCROLL REVEAL TIMELINE ──
+  const tlItems=document.querySelectorAll('.tl-item');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*120);obs.unobserve(e.target);}});
+  },{threshold:0.15});
+  tlItems.forEach(item=>obs.observe(item));
+
   // ── PASSWORD ──
   const pwOv=document.getElementById('pwOverlay');
   const ltOv=document.getElementById('letterOverlay');
@@ -936,9 +952,17 @@
     if(pw===SECRET){
       fl.classList.add('go');setTimeout(()=>fl.classList.remove('go'),800);
       pwOv.classList.remove('show');pw='';updDots();document.getElementById('pwError').textContent='';
-      setTimeout(showBouquet,350);
+      // Mở slideshow
+      curSlide=0;
+      document.querySelectorAll('.slide').forEach((s,i)=>{s.classList.toggle('active',i===0);s.classList.remove('exit');});
+      document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===0));
+      nextBtn.style.opacity='1';
+      nextBtn.classList.add('visible');
+      dotsEl.classList.add('visible');
+      setTimeout(()=>{ssEl.classList.add('show');confetti(35);},300);
     }else{errShake('Sai rồi bà ơi, thử lại nha 🥺');}
   }
+
   document.getElementById('openBtn').addEventListener('click',()=>{pw='';updDots();document.getElementById('pwError').textContent='';pwOv.classList.add('show');});
   document.getElementById('pwClose').addEventListener('click',()=>{pwOv.classList.remove('show');pw='';updDots();});
   pwOv.addEventListener('pointerdown',e=>{if(e.target===pwOv){pwOv.classList.remove('show');pw='';updDots();}});
@@ -956,6 +980,7 @@
     else if(e.key==='Enter')chkPw();
     else if(e.key==='Escape'){pwOv.classList.remove('show');pw='';updDots();}
   });
+
   document.getElementById('wishOpenLetter').addEventListener('click',()=>{bqOv.classList.remove('show');setTimeout(()=>ltOv.classList.add('show'),200);});
   document.getElementById('wishSkip').addEventListener('click',()=>bqOv.classList.remove('show'));
   document.getElementById('letterClose').addEventListener('click',()=>ltOv.classList.remove('show'));
