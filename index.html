@@ -31,196 +31,44 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 @keyframes spinSlow{to{transform:rotate(360deg);}}
 @keyframes numPop{0%{transform:scale(1);}40%{transform:scale(1.15);}100%{transform:scale(1);}}
 
+/* MUSIC BTN */
+#musicBtn{position:fixed;top:14px;right:14px;z-index:10000;background:rgba(10,0,20,.75);backdrop-filter:blur(10px);border:1px solid rgba(200,149,42,.35);border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 18px rgba(200,149,42,.2);transition:transform .2s,background .2s;display:flex;align-items:center;justify-content:center;}
+#musicBtn:hover{transform:scale(1.12);background:rgba(30,0,40,.85);}
+#musicBtn .eq{display:flex;gap:2px;align-items:flex-end;height:14px;}
+#musicBtn .eq-bar{width:3px;border-radius:2px;background:var(--gold2);animation:eqAnim 0.8s ease-in-out infinite;}
+#musicBtn .eq-bar:nth-child(1){height:6px;animation-delay:0s;}
+#musicBtn .eq-bar:nth-child(2){height:12px;animation-delay:.15s;}
+#musicBtn .eq-bar:nth-child(3){height:8px;animation-delay:.3s;}
+#musicBtn .eq-bar:nth-child(4){height:14px;animation-delay:.1s;}
+#musicBtn .eq-bar:nth-child(5){height:5px;animation-delay:.25s;}
+@keyframes eqAnim{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1);}}
+#musicBtn.paused .eq-bar{animation-play-state:paused;transform:scaleY(.3);}
+
 /* COUPLE ANIMATION */
-.couple-scene {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  animation: coupleAppear 2s ease 0.5s forwards;
-}
-@keyframes coupleAppear {
-  0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
-  100% { opacity: 1; transform: translateX(-50%) scale(1); }
-}
-.couple-figures {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(10px, 3vw, 20px);
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
-}
-
-/* Boy figure */
-.boy {
-  position: relative;
-  animation: boySway 4s ease-in-out infinite;
-}
-@keyframes boySway {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-.boy-body {
-  width: clamp(60px, 15vw, 80px);
-  height: clamp(100px, 25vw, 140px);
-  background: linear-gradient(180deg, #4a69bd 0%, #3c5aa6 100%);
-  border-radius: 20px 20px 5px 5px;
-  position: relative;
-}
-.boy-head {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(45px, 11vw, 60px);
-  height: clamp(45px, 11vw, 60px);
-  background: #fdbcb4;
-  border-radius: 50%;
-  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
-}
-.boy-hair {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(50px, 12vw, 65px);
-  height: 25px;
-  background: #2c1810;
-  border-radius: 50% 50% 0 0;
-}
-.boy-arm {
-  position: absolute;
-  right: -15px;
-  top: 20px;
-  width: clamp(20px, 5vw, 25px);
-  height: clamp(60px, 15vw, 80px);
-  background: #4a69bd;
-  border-radius: 10px;
-  transform: rotate(-30deg);
-  transform-origin: top center;
-  animation: armMove 3s ease-in-out infinite;
-}
-@keyframes armMove {
-  0%, 100% { transform: rotate(-30deg); }
-  50% { transform: rotate(-35deg); }
-}
-.boy-hand {
-  position: absolute;
-  bottom: -10px;
-  right: -5px;
-  width: clamp(18px, 4.5vw, 22px);
-  height: clamp(18px, 4.5vw, 22px);
-  background: #fdbcb4;
-  border-radius: 50%;
-}
-.flowers-bouquet {
-  position: absolute;
-  bottom: -15px;
-  right: -25px;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  transform: rotate(-15deg);
-  animation: flowerOffer 3s ease-in-out infinite;
-}
-@keyframes flowerOffer {
-  0%, 100% { transform: rotate(-15deg) translateX(0); }
-  50% { transform: rotate(-20deg) translateX(-5px); }
-}
-
-/* Girl figure */
-.girl {
-  position: relative;
-  animation: girlSway 4s ease-in-out infinite 0.5s;
-}
-@keyframes girlSway {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-.girl-body {
-  width: clamp(60px, 15vw, 80px);
-  height: clamp(95px, 24vw, 130px);
-  background: linear-gradient(180deg, #ff6b9d 0%, #e8557c 100%);
-  border-radius: 20px 20px 40px 40px;
-  position: relative;
-}
-.girl-dress {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(180deg, #ff6b9d 0%, #ff8fb3 100%);
-  border-radius: 10px 10px 40px 40px;
-  box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
-}
-.girl-head {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(45px, 11vw, 60px);
-  height: clamp(45px, 11vw, 60px);
-  background: #fdbcb4;
-  border-radius: 50%;
-  box-shadow: inset -3px -3px 10px rgba(0,0,0,0.1);
-}
-.girl-hair {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(55px, 13vw, 70px);
-  height: clamp(65px, 16vw, 85px);
-  background: linear-gradient(180deg, #8b4513 0%, #a0522d 100%);
-  border-radius: 50% 50% 45% 45%;
-}
-.girl-hair::before {
-  content: '🌸';
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: clamp(0.8rem, 2vw, 1.1rem);
-}
-.girl-arm {
-  position: absolute;
-  left: -10px;
-  top: 25px;
-  width: clamp(18px, 4.5vw, 22px);
-  height: clamp(50px, 12vw, 65px);
-  background: #fdbcb4;
-  border-radius: 10px;
-  transform: rotate(25deg);
-  transform-origin: top center;
-  animation: girlArmMove 3s ease-in-out infinite;
-}
-@keyframes girlArmMove {
-  0%, 100% { transform: rotate(25deg); }
-  50% { transform: rotate(30deg); }
-}
-.heart-float {
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  animation: heartFloat 2s ease-in-out infinite;
-}
-@keyframes heartFloat {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
-  50% { transform: translateX(-50%) translateY(-10px); opacity: 1; }
-}
-
-/* Specific positioning for hero page */
-.hero .couple-scene {
-  bottom: 8%;
-}
-
-/* Specific positioning for slideshow */
-#s0 .couple-scene {
-  bottom: 10%;
-  opacity: 0;
-  animation: coupleAppear 1.5s ease 0.8s forwards;
-}
+.couple-scene{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);z-index:1;pointer-events:none;opacity:0;animation:coupleAppear 2s ease 0.5s forwards;}
+@keyframes coupleAppear{0%{opacity:0;transform:translateX(-50%) scale(0.8);}100%{opacity:1;transform:translateX(-50%) scale(1);}}
+.couple-figures{display:flex;align-items:flex-end;gap:clamp(10px,3vw,20px);filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5));}
+.boy{position:relative;animation:boySway 4s ease-in-out infinite;}
+@keyframes boySway{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.boy-body{width:clamp(60px,15vw,80px);height:clamp(100px,25vw,140px);background:linear-gradient(180deg,#4a69bd 0%,#3c5aa6 100%);border-radius:20px 20px 5px 5px;position:relative;}
+.boy-head{position:absolute;top:-35px;left:50%;transform:translateX(-50%);width:clamp(45px,11vw,60px);height:clamp(45px,11vw,60px);background:#fdbcb4;border-radius:50%;box-shadow:inset -5px -5px 10px rgba(0,0,0,0.1);}
+.boy-hair{position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:clamp(50px,12vw,65px);height:25px;background:#2c1810;border-radius:50% 50% 0 0;}
+.boy-arm{position:absolute;right:-15px;top:20px;width:clamp(20px,5vw,25px);height:clamp(60px,15vw,80px);background:#4a69bd;border-radius:10px;transform:rotate(-30deg);transform-origin:top center;animation:armMove 3s ease-in-out infinite;}
+@keyframes armMove{0%,100%{transform:rotate(-30deg);}50%{transform:rotate(-35deg);}}
+.boy-hand{position:absolute;bottom:-10px;right:-5px;width:clamp(18px,4.5vw,22px);height:clamp(18px,4.5vw,22px);background:#fdbcb4;border-radius:50%;}
+.flowers-bouquet{position:absolute;bottom:-15px;right:-25px;font-size:clamp(1.8rem,5vw,2.5rem);transform:rotate(-15deg);animation:flowerOffer 3s ease-in-out infinite;}
+@keyframes flowerOffer{0%,100%{transform:rotate(-15deg) translateX(0);}50%{transform:rotate(-20deg) translateX(-5px);}}
+.girl{position:relative;animation:girlSway 4s ease-in-out infinite 0.5s;}
+@keyframes girlSway{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+.girl-body{width:clamp(60px,15vw,80px);height:clamp(95px,24vw,130px);background:linear-gradient(180deg,#ff6b9d 0%,#e8557c 100%);border-radius:20px 20px 40px 40px;position:relative;}
+.girl-dress{position:absolute;bottom:0;width:100%;height:50%;background:linear-gradient(180deg,#ff6b9d 0%,#ff8fb3 100%);border-radius:10px 10px 40px 40px;box-shadow:inset 0 -10px 20px rgba(0,0,0,0.1);}
+.girl-head{position:absolute;top:-35px;left:50%;transform:translateX(-50%);width:clamp(45px,11vw,60px);height:clamp(45px,11vw,60px);background:#fdbcb4;border-radius:50%;box-shadow:inset -3px -3px 10px rgba(0,0,0,0.1);}
+.girl-hair{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:clamp(55px,13vw,70px);height:clamp(65px,16vw,85px);background:linear-gradient(180deg,#8b4513 0%,#a0522d 100%);border-radius:50% 50% 45% 45%;}
+.girl-hair::before{content:'🌸';position:absolute;top:5px;right:5px;font-size:clamp(0.8rem,2vw,1.1rem);}
+.girl-arm{position:absolute;left:-10px;top:25px;width:clamp(18px,4.5vw,22px);height:clamp(50px,12vw,65px);background:#fdbcb4;border-radius:10px;transform:rotate(25deg);transform-origin:top center;animation:girlArmMove 3s ease-in-out infinite;}
+@keyframes girlArmMove{0%,100%{transform:rotate(25deg);}50%{transform:rotate(30deg);}}
+.heart-float{position:absolute;top:-60px;left:50%;transform:translateX(-50%);font-size:clamp(1.2rem,3vw,1.6rem);animation:heartFloat 2s ease-in-out infinite;}
+@keyframes heartFloat{0%,100%{transform:translateX(-50%) translateY(0);opacity:0.8;}50%{transform:translateX(-50%) translateY(-10px);opacity:1;}}
 
 /* HERO */
 .hero{min-height:100svh;display:grid;align-items:center;justify-items:center;text-align:center;position:relative;z-index:2;padding:clamp(1.5rem,5vw,3rem) clamp(1rem,4vw,2rem);overflow:hidden;}
@@ -296,50 +144,23 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
 .slide.exit-left{opacity:0;transform:translateX(-60px);pointer-events:none;}
 
-/* ══ ĐỒNG HỒ — 2 hàng ══ */
+/* CLOCK */
 .lc-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:96vw;width:100%;padding:0 .5rem;position:relative;z-index:5;}
 .lc-badge{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.3vw,.44rem);letter-spacing:.42em;text-transform:uppercase;color:rgba(200,149,42,.4);text-align:center;}
 .lc-title{font-family:'Great Vibes',cursive;font-size:clamp(1.9rem,7.5vw,3.5rem);color:var(--cream);text-align:center;text-shadow:0 0 40px rgba(255,200,210,.12);line-height:1.1;}
 .lc-title span{color:var(--rose2);filter:drop-shadow(0 0 20px rgba(232,48,90,.6));}
-
-/* 2-row clock grid */
 .lc-rows{display:flex;flex-direction:column;gap:clamp(.3rem,1.5vw,.6rem);width:100%;max-width:min(400px,92vw);}
 .lc-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.3rem,1.8vw,.65rem);}
-.lc-box{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:linear-gradient(145deg,rgba(176,31,66,.18),rgba(200,149,42,.09));
-  border:1px solid rgba(200,149,42,.25);
-  padding:clamp(.9rem,3.5vw,1.5rem) clamp(.5rem,2vw,.9rem);
-  position:relative;
-  box-shadow:0 8px 30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
-}
+.lc-box{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(176,31,66,.18),rgba(200,149,42,.09));border:1px solid rgba(200,149,42,.25);padding:clamp(.9rem,3.5vw,1.5rem) clamp(.5rem,2vw,.9rem);position:relative;box-shadow:0 8px 30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);}
 .lc-box::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.03),transparent);pointer-events:none;}
-
-/* Top row: Ngày + Giờ — big numbers */
-.lc-row.top .lc-num{
-  font-family:'Cinzel',serif;
-  font-size:clamp(3rem,11vw,5.2rem);
-  font-weight:600;
-  line-height:1;
-  text-shadow:0 0 24px currentColor;
-  display:block;
-}
-/* Bottom row: Phút + Giây — slightly smaller */
-.lc-row.bottom .lc-num{
-  font-family:'Cinzel',serif;
-  font-size:clamp(2.2rem,8.5vw,4rem);
-  font-weight:600;
-  line-height:1;
-  text-shadow:0 0 20px currentColor;
-  display:block;
-}
+.lc-row.top .lc-num{font-family:'Cinzel',serif;font-size:clamp(3rem,11vw,5.2rem);font-weight:600;line-height:1;text-shadow:0 0 24px currentColor;display:block;}
+.lc-row.bottom .lc-num{font-family:'Cinzel',serif;font-size:clamp(2.2rem,8.5vw,4rem);font-weight:600;line-height:1;text-shadow:0 0 20px currentColor;display:block;}
 .lc-row.top .lc-box:nth-child(1) .lc-num{color:var(--gold2);}
 .lc-row.top .lc-box:nth-child(2) .lc-num{color:var(--rose3);}
 .lc-row.bottom .lc-box:nth-child(1) .lc-num{color:var(--blush);}
 .lc-row.bottom .lc-box:nth-child(2) .lc-num{color:var(--gold3);}
 .lc-num.pop{animation:numPop .25s ease;}
 .lc-unit{font-family:'Cinzel',serif;font-size:clamp(.3rem,1.1vw,.42rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(200,149,42,.38);margin-top:.45rem;}
-
 .lc-since{font-family:'Playfair Display',serif;font-size:clamp(.68rem,2.6vw,.82rem);font-style:italic;color:rgba(244,167,185,.3);text-align:center;}
 .lc-hearts{display:flex;gap:.4rem;justify-content:center;}
 .lc-hearts span{font-size:.9rem;display:inline-block;animation:heartbeat 1.6s ease-in-out infinite;}
@@ -348,18 +169,39 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .lc-hearts span:nth-child(4){animation-delay:.2s;font-size:.7rem;}
 .lc-hearts span:nth-child(5){animation-delay:.4s;}
 
-/* SLIDE ẢNH */
+/* PHOTO SLIDES */
 .mem-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.38rem,1.6vw,.72rem);width:100%;max-width:min(340px,90vw);}
 .mem-badge{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.3vw,.43rem);letter-spacing:.38em;text-transform:uppercase;color:rgba(200,149,42,.38);}
 .mem-title{font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,6vw,2.4rem);color:var(--cream);text-align:center;}
-.mem-card{position:relative;background:linear-gradient(145deg,#fdf8f2,#fef0f4);padding:clamp(.45rem,1.8vw,.8rem) clamp(.45rem,1.8vw,.8rem) clamp(.8rem,2.3vw,1.1rem);box-shadow:0 18px 50px rgba(0,0,0,.65),0 4px 16px rgba(176,31,66,.22);transform:rotate(var(--rot,0deg));transition:transform .4s;width:100%;}
+
+/* FLOWER FRAME */
+.mem-card{position:relative;padding:clamp(.5rem,2vw,.9rem);box-shadow:0 18px 50px rgba(0,0,0,.65),0 4px 16px rgba(176,31,66,.22);transform:rotate(var(--rot,0deg));transition:transform .4s;width:100%;background:linear-gradient(145deg,#fdf8f2,#fef0f4);}
 .mem-card:hover{transform:rotate(0deg) scale(1.02);}
 .mem-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.06) contrast(1.04) brightness(1.02);}
 .mem-num{position:absolute;top:.42rem;right:.52rem;font-family:'Cinzel',serif;font-size:.34rem;letter-spacing:.22em;color:rgba(176,31,66,.28);text-transform:uppercase;}
+/* Flower frame corners */
+.frame-fl{position:absolute;font-size:1.5rem;line-height:1;pointer-events:none;animation:sway 3s ease-in-out infinite;z-index:2;}
+.frame-fl.ftl{top:-14px;left:-8px;animation-delay:0s;}
+.frame-fl.ftr{top:-14px;right:-8px;animation-delay:.3s;}
+.frame-fl.fbl{bottom:-14px;left:-8px;animation-delay:.6s;}
+.frame-fl.fbr{bottom:-14px;right:-8px;animation-delay:.9s;}
+.frame-fl.ftm{top:-16px;left:50%;transform:translateX(-50%);animation-delay:.15s;}
+.frame-fl.fbm{bottom:-16px;left:50%;transform:translateX(-50%);animation-delay:.45s;}
+
 .mem-caption{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.74rem,2.8vw,.88rem);font-style:italic;color:rgba(244,167,185,.55);line-height:1.7;text-align:center;max-width:min(310px,86vw);}
 .mem-heart{font-size:.85rem;color:rgba(232,48,90,.4);animation:heartbeat 1.6s ease-in-out infinite;text-align:center;}
 
-/* SLIDE LỜI NHẮN */
+/* SWIPE DOTS */
+.swipe-dots{display:flex;gap:6px;justify-content:center;}
+.sw-dot{width:7px;height:7px;border-radius:50%;background:rgba(200,149,42,.2);border:1px solid rgba(200,149,42,.3);transition:all .3s;}
+.sw-dot.on{background:var(--gold2);transform:scale(1.35);box-shadow:0 0 6px rgba(200,149,42,.6);}
+
+/* SAVE/SHARE */
+.photo-actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;}
+.act-btn{background:rgba(200,149,42,.08);backdrop-filter:blur(8px);border:1px solid rgba(200,149,42,.28);color:var(--gold2);border-radius:50px;padding:.5rem 1.2rem;font-size:clamp(.55rem,2.2vw,.68rem);font-family:'Cinzel',serif;letter-spacing:.15em;cursor:pointer;transition:background .2s,transform .15s;}
+.act-btn:hover{background:rgba(200,149,42,.18);transform:translateY(-2px);}
+
+/* MSG */
 .msg-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.55rem,2.2vw,.95rem);max-width:min(340px,88vw);text-align:center;}
 .msg-icon{font-size:clamp(1.9rem,7.5vw,3rem);animation:heartbeat 1.8s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(232,48,90,.6));}
 .msg-title{font-family:'Great Vibes',cursive;font-size:clamp(1.65rem,6.8vw,2.9rem);color:var(--cream);line-height:1.1;}
@@ -373,7 +215,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .msg-hearts span:nth-child(2){animation-delay:.2s;font-size:.7rem;}
 .msg-hearts span:nth-child(3){animation-delay:.4s;}
 
-/* SLIDE MỞ THƯ */
+/* OPEN LETTER SLIDE */
 .letter-slide-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:min(340px,88vw);text-align:center;}
 .letter-slide-icon{font-size:clamp(2.3rem,8.5vw,3.7rem);animation:heartbeat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(232,48,90,.7));}
 .letter-slide-title{font-family:'Great Vibes',cursive;font-size:clamp(1.85rem,7.5vw,3.5rem);color:var(--cream);}
@@ -386,11 +228,9 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .btn-open-letter{background:linear-gradient(135deg,rgba(176,31,66,.35),rgba(200,149,42,.15));border:1px solid rgba(200,149,42,.45);color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(.48rem,1.9vw,.6rem);letter-spacing:.28em;text-transform:uppercase;padding:.85rem 1.8rem;cursor:pointer;min-height:52px;width:min(270px,78vw);display:inline-flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 0 30px rgba(176,31,66,.28);transition:all .3s;position:relative;overflow:hidden;}
 .btn-open-letter:active{transform:scale(.95);}
 
-/* NÚT TIẾP THEO */
+/* NEXT BTN */
 .btn-next{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(176,31,66,.25),rgba(200,149,42,.1));border:1px solid rgba(200,149,42,.38);color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(.44rem,1.7vw,.54rem);letter-spacing:.28em;text-transform:uppercase;padding:.6rem 1.5rem;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;box-shadow:0 0 20px rgba(176,31,66,.16);transition:all .3s;margin-top:clamp(.15rem,.8vw,.35rem);}
 .btn-next:active{transform:scale(.94);}
-.btn-next::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,48,90,.1),rgba(200,149,42,.05));opacity:0;transition:opacity .3s;}
-.btn-next:hover::before{opacity:1;}
 
 /* PROGRESS DOTS */
 #slideDots{position:fixed;bottom:.75rem;left:50%;transform:translateX(-50%);z-index:9999;display:none;gap:.5rem;align-items:center;}
@@ -431,8 +271,14 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .f-strip span:nth-child(2n){animation-delay:.35s;}.f-strip span:nth-child(3n){animation-delay:.7s;}
 .letter-close{position:absolute;top:-13px;right:-13px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b01f42,#6a0820);border:1px solid rgba(200,149,42,.2);color:#ffe8ef;font-size:.78rem;cursor:pointer;box-shadow:0 4px 12px rgba(180,20,60,.48);display:flex;align-items:center;justify-content:center;transition:transform .2s;}
 .letter-close:active{transform:scale(.9);}
+
+/* CONFETTI */
 .conf-p{position:fixed;pointer-events:none;z-index:450;border-radius:1px;animation:confD var(--cd,2s) linear var(--cdelay,0s) forwards;}
 @keyframes confD{0%{transform:translateY(-15px) rotate(0);opacity:1;}100%{transform:translateY(108vh) rotate(720deg) translateX(var(--ctx,0px));opacity:0;}}
+
+/* FIREWORKS */
+.fw-p{position:fixed;pointer-events:none;border-radius:50%;animation:fwFly linear forwards;z-index:9997;}
+@keyframes fwFly{0%{transform:translate(0,0) scale(1.2);opacity:1;}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0;}}
 </style>
 </head>
 <body>
@@ -441,39 +287,39 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 <div id="petals"></div>
 <div class="flash" id="flash"></div>
 
+<!-- MUSIC BTN -->
+<button id="musicBtn" title="Nhạc nền">
+  <div class="eq">
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+  </div>
+</button>
+
 <!-- HERO -->
 <section class="hero">
   <div class="c-gem tl"><div class="dot"></div></div>
   <div class="c-gem tr"><div class="dot"></div></div>
   <div class="c-gem bl"><div class="dot"></div></div>
   <div class="c-gem br"><div class="dot"></div></div>
-  
-  <!-- Couple Animation for Hero -->
   <div class="couple-scene">
     <div class="couple-figures">
       <div class="boy">
         <div class="boy-body"></div>
-        <div class="boy-head">
-          <div class="boy-hair"></div>
-        </div>
-        <div class="boy-arm">
-          <div class="boy-hand"></div>
-        </div>
+        <div class="boy-head"><div class="boy-hair"></div></div>
+        <div class="boy-arm"><div class="boy-hand"></div></div>
         <div class="flowers-bouquet">💐</div>
       </div>
       <div class="heart-float">💕</div>
       <div class="girl">
-        <div class="girl-body">
-          <div class="girl-dress"></div>
-        </div>
-        <div class="girl-head">
-          <div class="girl-hair"></div>
-        </div>
+        <div class="girl-body"><div class="girl-dress"></div></div>
+        <div class="girl-head"><div class="girl-hair"></div></div>
         <div class="girl-arm"></div>
       </div>
     </div>
   </div>
-  
   <div class="hero-inner">
     <div class="flower-row">
       <span>🌹</span><span>🌸</span><span>🌺</span><span>🪷</span>
@@ -536,59 +382,35 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 <!-- SLIDESHOW -->
 <div id="slideshow">
 
-  <!-- SLIDE 0: đồng hồ đếm ngày — 2 hàng -->
+  <!-- SLIDE 0: Clock -->
   <div class="slide active" id="s0">
-    <!-- Couple Animation for Clock -->
     <div class="couple-scene">
       <div class="couple-figures">
         <div class="boy">
           <div class="boy-body"></div>
-          <div class="boy-head">
-            <div class="boy-hair"></div>
-          </div>
-          <div class="boy-arm">
-            <div class="boy-hand"></div>
-          </div>
+          <div class="boy-head"><div class="boy-hair"></div></div>
+          <div class="boy-arm"><div class="boy-hand"></div></div>
           <div class="flowers-bouquet">💐</div>
         </div>
         <div class="heart-float">💕</div>
         <div class="girl">
-          <div class="girl-body">
-            <div class="girl-dress"></div>
-          </div>
-          <div class="girl-head">
-            <div class="girl-hair"></div>
-          </div>
+          <div class="girl-body"><div class="girl-dress"></div></div>
+          <div class="girl-head"><div class="girl-hair"></div></div>
           <div class="girl-arm"></div>
         </div>
       </div>
     </div>
-    
     <div class="lc-wrap">
       <div class="lc-badge">✦ Chúng Mình Đã Bên Nhau ✦</div>
       <div class="lc-title">Tình Yêu Của <span>Chúng Ta</span> 💕</div>
       <div class="lc-rows">
-        <!-- Hàng trên: Ngày + Giờ -->
         <div class="lc-row top">
-          <div class="lc-box">
-            <span class="lc-num" id="lcD">0</span>
-            <span class="lc-unit">Ngày</span>
-          </div>
-          <div class="lc-box">
-            <span class="lc-num" id="lcH">00</span>
-            <span class="lc-unit">Giờ</span>
-          </div>
+          <div class="lc-box"><span class="lc-num" id="lcD">0</span><span class="lc-unit">Ngày</span></div>
+          <div class="lc-box"><span class="lc-num" id="lcH">00</span><span class="lc-unit">Giờ</span></div>
         </div>
-        <!-- Hàng dưới: Phút + Giây -->
         <div class="lc-row bottom">
-          <div class="lc-box">
-            <span class="lc-num" id="lcM">00</span>
-            <span class="lc-unit">Phút</span>
-          </div>
-          <div class="lc-box">
-            <span class="lc-num" id="lcS">00</span>
-            <span class="lc-unit">Giây</span>
-          </div>
+          <div class="lc-box"><span class="lc-num" id="lcM">00</span><span class="lc-unit">Phút</span></div>
+          <div class="lc-box"><span class="lc-num" id="lcS">00</span><span class="lc-unit">Giây</span></div>
         </div>
       </div>
       <div class="lc-since">Kể từ ngày 01 · 01 · 2026 🌹</div>
@@ -603,11 +425,18 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <div class="mem-badge">✦ Kỷ Niệm 01 ✦</div>
       <div class="mem-title">Patin Cùng Nhau 🛼</div>
       <div class="mem-card" style="--rot:-2.5deg">
+        <span class="frame-fl ftl">🌸</span><span class="frame-fl ftr">🌺</span>
+        <span class="frame-fl fbl">🌼</span><span class="frame-fl fbr">🌹</span>
+        <span class="frame-fl ftm">🪷</span><span class="frame-fl fbm">💐</span>
         <div class="mem-num">01 · Kỷ niệm</div>
         <img class="mem-photo" src="https://i.ibb.co/Pzg0wdLj/z7594705602761-f7b3247ae28597dcd208e17f7d1b9acf.jpg" alt="Patin" loading="lazy">
       </div>
       <div class="mem-caption">Chúng ta đã cùng nhau trượt patin xuống quảng trường nhỏ, lúc đấy anh rất vui vì đã chỉ cho em cách đi patin và được nắm tay lần đầu tiên nhờ bộ môn này kkk</div>
       <div class="mem-heart">🌸</div>
+      <div class="photo-actions">
+        <button class="act-btn" onclick="saveImg('https://i.ibb.co/Pzg0wdLj/z7594705602761-f7b3247ae28597dcd208e17f7d1b9acf.jpg',1)">💾 Lưu Ảnh</button>
+        <button class="act-btn" onclick="sharePg()">📤 Chia Sẻ</button>
+      </div>
       <button class="btn-next" onclick="goSlide(2)">✦ &nbsp;Tiếp Theo&nbsp; ✦</button>
     </div>
   </div>
@@ -618,11 +447,18 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <div class="mem-badge">✦ Kỷ Niệm 02 ✦</div>
       <div class="mem-title">Cafe Xa Xa ☕</div>
       <div class="mem-card" style="--rot:2deg">
+        <span class="frame-fl ftl">🌼</span><span class="frame-fl ftr">🌸</span>
+        <span class="frame-fl fbl">🌺</span><span class="frame-fl fbr">🌷</span>
+        <span class="frame-fl ftm">🌹</span><span class="frame-fl fbm">🪷</span>
         <div class="mem-num">02 · Kỷ niệm</div>
         <img class="mem-photo" src="https://i.ibb.co/qM0F8V39/z7594705600002-cbd9f3e184091b579a4775277ae6b476.jpg" alt="Cafe" loading="lazy">
       </div>
       <div class="mem-caption">Lần đầu tiên chở em đi quán cafe nào mà xa đến vậy và lúc đó anh rất vui vì được ở bên em nma tiếc thay không được ngửi mùi sữa =))</div>
       <div class="mem-heart">💗</div>
+      <div class="photo-actions">
+        <button class="act-btn" onclick="saveImg('https://i.ibb.co/qM0F8V39/z7594705600002-cbd9f3e184091b579a4775277ae6b476.jpg',2)">💾 Lưu Ảnh</button>
+        <button class="act-btn" onclick="sharePg()">📤 Chia Sẻ</button>
+      </div>
       <button class="btn-next" onclick="goSlide(3)">✦ &nbsp;Tiếp Theo&nbsp; ✦</button>
     </div>
   </div>
@@ -633,11 +469,18 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <div class="mem-badge">✦ Kỷ Niệm 03 ✦</div>
       <div class="mem-title">Bóng Chuyền Sáng Sớm 🏐</div>
       <div class="mem-card" style="--rot:-1.8deg">
+        <span class="frame-fl ftl">🌺</span><span class="frame-fl ftr">🌼</span>
+        <span class="frame-fl fbl">🌸</span><span class="frame-fl fbr">🌹</span>
+        <span class="frame-fl ftm">🌷</span><span class="frame-fl fbm">💐</span>
         <div class="mem-num">03 · Kỷ niệm</div>
         <img class="mem-photo" src="https://i.ibb.co/bRBzTzCV/z7594705601879-116a22596807f968493902afbe578b8f.jpg" alt="Bóng chuyền" loading="lazy">
       </div>
       <div class="mem-caption">Lần đầu chúng ta cùng nhau đánh bóng chuyền buổi sáng, quả thật rất vui, lúc đó anh cũng không nghĩ là dậy nổi kkk mà giờ dậy không nổi thật =))))</div>
       <div class="mem-heart">🌺</div>
+      <div class="photo-actions">
+        <button class="act-btn" onclick="saveImg('https://i.ibb.co/bRBzTzCV/z7594705601879-116a22596807f968493902afbe578b8f.jpg',3)">💾 Lưu Ảnh</button>
+        <button class="act-btn" onclick="sharePg()">📤 Chia Sẻ</button>
+      </div>
       <button class="btn-next" onclick="goSlide(4)">✦ &nbsp;Tiếp Theo&nbsp; ✦</button>
     </div>
   </div>
@@ -648,16 +491,23 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <div class="mem-badge">✦ Kỷ Niệm 04 ✦</div>
       <div class="mem-title">Ngồi Ở Cảng 🌊</div>
       <div class="mem-card" style="--rot:2.8deg">
+        <span class="frame-fl ftl">🌷</span><span class="frame-fl ftr">🌹</span>
+        <span class="frame-fl fbl">🌺</span><span class="frame-fl fbr">🌸</span>
+        <span class="frame-fl ftm">🌼</span><span class="frame-fl fbm">🪷</span>
         <div class="mem-num">04 · Kỷ niệm</div>
         <img class="mem-photo" src="https://i.ibb.co/xKXShGY8/z7594705602000-973a4d8bfd7141f4e2fd0f2a28214adb.jpg" alt="Cảng" loading="lazy">
       </div>
       <div class="mem-caption">Đây là lần đầu tiên xuống ngồi ở dưới cảng mà anh có thể tự tin đi kể hoặc bắt chuyện ở ngoài đời trơn tru đến zậy á, cảm ơn em đã cho anh cơ hội nhé</div>
       <div class="mem-heart">🪷</div>
+      <div class="photo-actions">
+        <button class="act-btn" onclick="saveImg('https://i.ibb.co/xKXShGY8/z7594705602000-973a4d8bfd7141f4e2fd0f2a28214adb.jpg',4)">💾 Lưu Ảnh</button>
+        <button class="act-btn" onclick="sharePg()">📤 Chia Sẻ</button>
+      </div>
       <button class="btn-next" onclick="goSlide(5)">✦ &nbsp;Tiếp Theo&nbsp; ✦</button>
     </div>
   </div>
 
-  <!-- SLIDE 5: Lời nhắn tương lai -->
+  <!-- SLIDE 5 -->
   <div class="slide" id="s5">
     <div class="msg-wrap">
       <div class="msg-icon">🌹</div>
@@ -670,7 +520,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
     </div>
   </div>
 
-  <!-- SLIDE 6: Mở thư -->
+  <!-- SLIDE 6 -->
   <div class="slide" id="s6">
     <div class="letter-slide-wrap">
       <div class="letter-slide-icon">💌</div>
@@ -680,17 +530,13 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <button class="btn-open-letter" id="openLetterBtn">✉ &nbsp;Đọc Thư Của Tin</button>
     </div>
   </div>
-
 </div>
 
-<!-- Progress dots -->
+<!-- Dots -->
 <div id="slideDots">
-  <div class="sdot on" id="sd0"></div>
-  <div class="sdot" id="sd1"></div>
-  <div class="sdot" id="sd2"></div>
-  <div class="sdot" id="sd3"></div>
-  <div class="sdot" id="sd4"></div>
-  <div class="sdot" id="sd5"></div>
+  <div class="sdot on" id="sd0"></div><div class="sdot" id="sd1"></div>
+  <div class="sdot" id="sd2"></div><div class="sdot" id="sd3"></div>
+  <div class="sdot" id="sd4"></div><div class="sdot" id="sd5"></div>
   <div class="sdot" id="sd6"></div>
 </div>
 
@@ -740,7 +586,176 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 </div>
 
 <script>
-// ── ĐẾM NGÀY ──
+// ═══════════════════════════════════════
+// 🎵 NHẠC NỀN — giai điệu lãng mạn nhẹ nhàng
+// ═══════════════════════════════════════
+let actx = null;
+let musicOn = false;
+let musicTimeout = null;
+let masterGain = null;
+
+function initAudio(){
+  if(actx) return;
+  actx = new (window.AudioContext || window.webkitAudioContext)();
+  masterGain = actx.createGain();
+  masterGain.gain.value = 0.13;
+  masterGain.connect(actx.destination);
+}
+
+// Giai điệu lãng mạn — La minor, nhịp chậm
+// Melody + chord pad + bass
+const BPM = 58;
+const BEAT = 60 / BPM;
+const BAR = BEAT * 4;
+
+// Chord pads (Am, F, C, G)
+const chords = [
+  [220, 261.63, 329.63],   // Am
+  [174.61, 220, 261.63],   // F
+  [130.81, 164.81, 196],   // C
+  [196, 246.94, 293.66],   // G
+];
+
+// Melody notes (freq, beat offset, duration in beats)
+const melNotes = [
+  // Bar 1 Am
+  [440,0,.8],[392,1,.8],[349.23,2,1.2],[329.63,3,.8],
+  // Bar 2 F
+  [349.23,4,.8],[329.63,5,.8],[293.66,6,1.2],[261.63,7,.8],
+  // Bar 3 C
+  [261.63,8,.8],[293.66,9,.8],[329.63,10,1.2],[349.23,11,.8],
+  // Bar 4 G
+  [392,12,.8],[349.23,13,.8],[329.63,14,1.2],[293.66,15,.8],
+  // Bar 5 Am
+  [440,16,1.6],[392,17.5,.8],[349.23,18.5,.8],[329.63,19.5,.8],
+  // Bar 6 F
+  [349.23,20,1.2],[293.66,21,.8],[261.63,22,2],
+  // Bar 7 C
+  [261.63,24,.8],[293.66,25,.8],[329.63,26,.8],[349.23,27,.8],
+  // Bar 8 G→Am
+  [392,28,1.6],[329.63,30,2],
+];
+
+const TOTAL_BARS = 8;
+
+function playNote(freq, startT, durBeats, type='sine', vol=0.22){
+  if(!actx || !musicOn) return;
+  const osc = actx.createOscillator();
+  const g = actx.createGain();
+  const dur = durBeats * BEAT;
+  osc.type = type;
+  osc.frequency.value = freq;
+  // Vibrato
+  const vib = actx.createOscillator();
+  const vibG = actx.createGain();
+  vib.frequency.value = 5.2;
+  vibG.gain.value = 2.5;
+  vib.connect(vibG);
+  vibG.connect(osc.frequency);
+  vib.start(startT);
+  vib.stop(startT + dur + 0.1);
+  // Envelope
+  const now = startT;
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(vol, now + 0.06);
+  g.gain.setValueAtTime(vol, now + dur - 0.1);
+  g.gain.linearRampToValueAtTime(0, now + dur);
+  osc.connect(g);
+  g.connect(masterGain);
+  osc.start(now);
+  osc.stop(now + dur + 0.05);
+}
+
+function playChordPad(freqs, startT, durBeats, vol=0.055){
+  if(!actx || !musicOn) return;
+  freqs.forEach((f,i) => {
+    const osc = actx.createOscillator();
+    const g = actx.createGain();
+    const dur = durBeats * BEAT;
+    osc.type = 'sine';
+    osc.frequency.value = f;
+    const now = startT;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(vol, now + 0.25);
+    g.gain.setValueAtTime(vol * 0.85, now + dur - 0.3);
+    g.gain.linearRampToValueAtTime(0, now + dur);
+    osc.connect(g);
+    g.connect(masterGain);
+    osc.start(now);
+    osc.stop(now + dur + 0.05);
+  });
+}
+
+function playBass(freq, startT, durBeats, vol=0.1){
+  if(!actx || !musicOn) return;
+  const osc = actx.createOscillator();
+  const g = actx.createGain();
+  const dur = durBeats * BEAT;
+  osc.type = 'triangle';
+  osc.frequency.value = freq / 2;
+  const now = startT;
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime(vol, now + 0.08);
+  g.gain.setValueAtTime(vol * 0.7, now + dur - 0.1);
+  g.gain.linearRampToValueAtTime(0, now + dur);
+  osc.connect(g);
+  g.connect(masterGain);
+  osc.start(now);
+  osc.stop(now + dur + 0.05);
+}
+
+function scheduleMusic(offset){
+  if(!musicOn || !actx) return;
+  const startT = actx.currentTime + 0.05;
+  const totalDur = TOTAL_BARS * BAR;
+
+  // Chord pads — one per bar
+  chords.forEach((ch, i) => {
+    playChordPad(ch, startT + i * BAR, 4, 0.05);
+    // Bass root
+    playBass(ch[0], startT + i * BAR, 4, 0.09);
+    playBass(ch[0], startT + i * BAR + BEAT * 2, 2, 0.065);
+  });
+
+  // Melody
+  melNotes.forEach(([f, beatOff, dur]) => {
+    playNote(f, startT + beatOff * BEAT, dur, 'sine', 0.18);
+  });
+
+  // Schedule loop
+  musicTimeout = setTimeout(() => {
+    if(musicOn) scheduleMusic(0);
+  }, (totalDur - 0.2) * 1000);
+}
+
+function startMusic(){
+  initAudio();
+  if(actx.state === 'suspended') actx.resume();
+  musicOn = true;
+  document.getElementById('musicBtn').classList.remove('paused');
+  scheduleMusic(0);
+}
+function stopMusic(){
+  musicOn = false;
+  clearTimeout(musicTimeout);
+  document.getElementById('musicBtn').classList.add('paused');
+}
+
+document.getElementById('musicBtn').addEventListener('click', () => {
+  if(musicOn) stopMusic(); else startMusic();
+});
+
+// Auto-start on first interaction
+let autoStarted = false;
+function tryAutoStart(){
+  if(autoStarted) return;
+  autoStarted = true;
+  startMusic();
+}
+document.addEventListener('touchstart', tryAutoStart, {once:true, passive:true});
+document.addEventListener('click', tryAutoStart, {once:true});
+
+// ─── COUNTER ───
 const START = new Date('2026-01-01T00:00:00');
 function updateCounter(){
   const diff = Math.max(0, Date.now() - START);
@@ -748,47 +763,42 @@ function updateCounter(){
   const h = Math.floor((diff%864e5)/36e5);
   const m = Math.floor((diff%36e5)/6e4);
   const s = Math.floor((diff%6e4)/1000);
-  const ids = ['lcD','lcH','lcM','lcS'];
-  const vals = [String(d), String(h).padStart(2,'0'), String(m).padStart(2,'0'), String(s).padStart(2,'0')];
+  const ids=['lcD','lcH','lcM','lcS'];
+  const vals=[String(d),String(h).padStart(2,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')];
   vals.forEach((v,i)=>{
-    const el = document.getElementById(ids[i]);
-    if(el && el.textContent !== v){
-      el.textContent = v;
-      el.classList.remove('pop');
-      void el.offsetWidth;
-      el.classList.add('pop');
-    }
+    const el=document.getElementById(ids[i]);
+    if(el&&el.textContent!==v){el.textContent=v;el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
   });
 }
 updateCounter();
-setInterval(updateCounter, 1000);
+setInterval(updateCounter,1000);
 
-// ── STARS ──
-const stEl = document.getElementById('stars');
+// ─── STARS ───
+const stEl=document.getElementById('stars');
 for(let i=0;i<100;i++){
-  const s=document.createElement('div'); s.className='star';
+  const s=document.createElement('div');s.className='star';
   const z=.4+Math.random()*1.6;
   s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;animation-duration:${2+Math.random()*6}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*.2};`;
   stEl.appendChild(s);
 }
 
-// ── PETALS ──
-const ptEl = document.getElementById('petals');
-const sym = ['🌸','🌺','🌹','🪷','🌼','🌷'];
+// ─── PETALS ───
+const ptEl=document.getElementById('petals');
+const sym=['🌸','🌺','🌹','🪷','🌼','🌷'];
 for(let i=0;i<25;i++){
-  const p=document.createElement('div'); p.className='petal';
+  const p=document.createElement('div');p.className='petal';
   p.textContent=sym[Math.floor(Math.random()*sym.length)];
   p.style.cssText=`left:${Math.random()*100}%;font-size:${.5+Math.random()*.8}rem;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*15}s;`;
   ptEl.appendChild(p);
 }
 
-// ── SPARKLE ──
+// ─── SPARKLE ───
 function sparkle(x,y,n){
   const em=['💕','✨','🌸','❤️','💫','🌹'];
   for(let i=0;i<n;i++){
-    const s=document.createElement('div'); s.className='sparkle';
+    const s=document.createElement('div');s.className='sparkle';
     s.textContent=em[Math.floor(Math.random()*em.length)];
-    const a=(Math.PI*2/n)*i, d=30+Math.random()*48;
+    const a=(Math.PI*2/n)*i,d=30+Math.random()*48;
     s.style.cssText=`left:${x}px;top:${y}px;font-size:${.6+Math.random()*.5}rem;`;
     s.style.setProperty('--tx',Math.cos(a)*d+'px');
     s.style.setProperty('--ty',Math.sin(a)*d+'px');
@@ -799,110 +809,121 @@ function sparkle(x,y,n){
 document.addEventListener('click',e=>sparkle(e.clientX,e.clientY,5));
 document.addEventListener('touchstart',e=>{const t=e.touches[0];sparkle(t.clientX,t.clientY,4);},{passive:true});
 
-// ── CONFETTI ──
+// ─── CONFETTI ───
 function confetti(n){
   const cols=['#e8305a','#c8952a','#f0c96a','#ff9db5','#fff','#b01f42','#ffe8a0'];
   for(let i=0;i<n;i++){
-    const c=document.createElement('div'); c.className='conf-p';
+    const c=document.createElement('div');c.className='conf-p';
     c.style.cssText=`left:${5+Math.random()*90}%;top:-10px;background:${cols[i%cols.length]};width:${3+Math.random()*6}px;height:${4+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};--cd:${1.5+Math.random()*2}s;--cdelay:${Math.random()*.6}s;--ctx:${-70+Math.random()*140}px;`;
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),4000);
   }
 }
 
-// ── SLIDESHOW ──
-const SS = document.getElementById('slideshow');
-const DOTS = document.getElementById('slideDots');
-let cur = 0;
-const TOTAL = 7;
+// ─── FIREWORKS ───
+function fireworks(){
+  const cols=['#e8305a','#c8952a','#f0c96a','#ff9db5','#fff','#ff6b9d','#ffe8a0'];
+  for(let b=0;b<7;b++){
+    setTimeout(()=>{
+      const cx=15+Math.random()*70+'vw';
+      const cy=10+Math.random()*50+'vh';
+      for(let i=0;i<28;i++){
+        const p=document.createElement('div');p.className='fw-p';
+        const ang=Math.random()*360,dist=70+Math.random()*130;
+        const tx=Math.cos(ang*Math.PI/180)*dist+'px';
+        const ty=Math.sin(ang*Math.PI/180)*dist+'px';
+        p.style.cssText=`left:${cx};top:${cy};width:${5+Math.random()*5}px;height:${5+Math.random()*5}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${tx};--ty:${ty};animation-duration:${.7+Math.random()*.7}s;animation-delay:${Math.random()*.25}s;`;
+        document.body.appendChild(p);
+        setTimeout(()=>p.remove(),1800);
+      }
+    },b*280);
+  }
+}
 
+// ─── SLIDESHOW ───
+const SS=document.getElementById('slideshow');
+const DOTS=document.getElementById('slideDots');
+let cur=0;
+const TOTAL=7;
 function goSlide(n){
-  if(n < 0 || n >= TOTAL) return;
-  const slides = document.querySelectorAll('.slide');
+  if(n<0||n>=TOTAL) return;
+  const slides=document.querySelectorAll('.slide');
   slides[cur].classList.remove('active');
   slides[cur].classList.add('exit-left');
-  const prev = cur;
-  cur = n;
-  setTimeout(()=>slides[prev].classList.remove('exit-left'), 600);
+  const prev=cur; cur=n;
+  setTimeout(()=>slides[prev].classList.remove('exit-left'),600);
   slides[cur].classList.add('active');
-  document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on', i===cur));
-  slides[cur].scrollTop = 0;
+  document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===cur));
+  slides[cur].scrollTop=0;
 }
 
-// ── PASSWORD ──
-const SECRET = '2703';
-const pwOv = document.getElementById('pwOverlay');
-const ltOv = document.getElementById('letterOverlay');
-const fl = document.getElementById('flash');
-const pwDots = [0,1,2,3].map(i=>document.getElementById('d'+i));
-let pw = '';
-
-function updDots(){
-  pwDots.forEach((d,i)=>{
-    d.classList.remove('filled','error');
-    if(i<pw.length) d.classList.add('filled');
-  });
-}
+// ─── PASSWORD ───
+const SECRET='2703';
+const pwOv=document.getElementById('pwOverlay');
+const ltOv=document.getElementById('letterOverlay');
+const fl=document.getElementById('flash');
+const pwDots=[0,1,2,3].map(i=>document.getElementById('d'+i));
+let pw='';
+function updDots(){pwDots.forEach((d,i)=>{d.classList.remove('filled','error');if(i<pw.length)d.classList.add('filled');});}
 function errShake(msg){
   pwDots.forEach(d=>{d.classList.remove('filled');d.classList.add('error');});
-  document.getElementById('pwError').textContent = msg;
-  setTimeout(()=>{pwDots.forEach(d=>d.classList.remove('error'));pw='';updDots();}, 750);
+  document.getElementById('pwError').textContent=msg;
+  setTimeout(()=>{pwDots.forEach(d=>d.classList.remove('error'));pw='';updDots();},750);
 }
 function chkPw(){
-  if(pw.length < SECRET.length){ document.getElementById('pwError').textContent='Còn thiếu số rồi bà ơi 💕'; return; }
-  if(pw === SECRET){
+  if(pw.length<SECRET.length){document.getElementById('pwError').textContent='Còn thiếu số rồi bà ơi 💕';return;}
+  if(pw===SECRET){
     fl.classList.add('go');
-    setTimeout(()=>fl.classList.remove('go'), 800);
+    setTimeout(()=>fl.classList.remove('go'),800);
     pwOv.classList.remove('show');
-    pw=''; updDots();
+    pw='';updDots();
     document.getElementById('pwError').textContent='';
-    cur = 0;
-    document.querySelectorAll('.slide').forEach((s,i)=>{
-      s.classList.remove('active','exit-left');
-      if(i===0) s.classList.add('active');
-    });
+    cur=0;
+    document.querySelectorAll('.slide').forEach((s,i)=>{s.classList.remove('active','exit-left');if(i===0)s.classList.add('active');});
     document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===0));
-    SS.classList.add('show');
-    DOTS.classList.add('show');
-    confetti(40);
+    SS.classList.add('show');DOTS.classList.add('show');
+    confetti(50);
   } else {
     errShake('Sai rồi bà ơi, thử lại nha 🥺');
   }
 }
-
-document.getElementById('openBtn').addEventListener('click',()=>{
-  pw=''; updDots();
-  document.getElementById('pwError').textContent='';
-  pwOv.classList.add('show');
-});
+document.getElementById('openBtn').addEventListener('click',()=>{pw='';updDots();document.getElementById('pwError').textContent='';pwOv.classList.add('show');});
 document.getElementById('pwClose').addEventListener('click',()=>{pwOv.classList.remove('show');pw='';updDots();});
 pwOv.addEventListener('pointerdown',e=>{if(e.target===pwOv){pwOv.classList.remove('show');pw='';updDots();}});
 document.querySelectorAll('.num-btn[data-n]').forEach(b=>b.addEventListener('click',()=>{
-  if(pw.length>=SECRET.length) return;
-  pw+=b.dataset.n;
-  document.getElementById('pwError').textContent='';
-  updDots();
-  if(pw.length===SECRET.length) setTimeout(chkPw,200);
+  if(pw.length>=SECRET.length)return;
+  pw+=b.dataset.n;document.getElementById('pwError').textContent='';updDots();
+  if(pw.length===SECRET.length)setTimeout(chkPw,200);
 }));
 document.getElementById('numDel').addEventListener('click',()=>{pw=pw.slice(0,-1);updDots();document.getElementById('pwError').textContent='';});
 document.getElementById('numOk').addEventListener('click',chkPw);
 document.addEventListener('keydown',e=>{
-  if(!pwOv.classList.contains('show')) return;
+  if(!pwOv.classList.contains('show'))return;
   if(e.key>='0'&&e.key<='9'&&pw.length<SECRET.length){pw+=e.key;updDots();document.getElementById('pwError').textContent='';if(pw.length===SECRET.length)setTimeout(chkPw,200);}
   else if(e.key==='Backspace'){pw=pw.slice(0,-1);updDots();}
-  else if(e.key==='Enter') chkPw();
+  else if(e.key==='Enter')chkPw();
   else if(e.key==='Escape'){pwOv.classList.remove('show');pw='';updDots();}
 });
 
-// ── LETTER ──
+// ─── LETTER ───
 document.getElementById('openLetterBtn').addEventListener('click',()=>{
-  SS.classList.remove('show');
-  DOTS.classList.remove('show');
-  setTimeout(()=>ltOv.classList.add('show'),200);
-  confetti(60);
+  SS.classList.remove('show');DOTS.classList.remove('show');
+  setTimeout(()=>{ltOv.classList.add('show');fireworks();confetti(70);},200);
 });
 document.getElementById('letterClose').addEventListener('click',()=>ltOv.classList.remove('show'));
 ltOv.addEventListener('pointerdown',e=>{if(e.target===ltOv)ltOv.classList.remove('show');});
+
+// ─── SAVE & SHARE ───
+function saveImg(url, n){
+  const a=document.createElement('a');
+  a.href=url; a.download='kyNiem-'+n+'.jpg';
+  a.target='_blank'; a.click();
+}
+function sharePg(){
+  const txt='💕 Trang kỷ niệm 8/3 dành cho Tien yêu 🌹';
+  if(navigator.share){navigator.share({title:'Chúc Mừng 8/3 💕',text:txt,url:location.href});}
+  else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('✅ Đã sao chép link! 💕'));}
+}
 </script>
 </body>
 </html>
