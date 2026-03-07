@@ -31,7 +31,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 @keyframes spinSlow{to{transform:rotate(360deg);}}
 @keyframes numPop{0%{transform:scale(1);}40%{transform:scale(1.15);}100%{transform:scale(1);}}
 
-/* MUSIC BTN */
 #musicBtn{position:fixed;top:14px;right:14px;z-index:10000;background:rgba(10,0,20,.75);backdrop-filter:blur(10px);border:1px solid rgba(200,149,42,.35);border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 18px rgba(200,149,42,.2);transition:transform .2s,background .2s;display:flex;align-items:center;justify-content:center;}
 #musicBtn:hover{transform:scale(1.12);background:rgba(30,0,40,.85);}
 #musicBtn .eq{display:flex;gap:2px;align-items:flex-end;height:14px;}
@@ -44,7 +43,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 @keyframes eqAnim{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1);}}
 #musicBtn.paused .eq-bar{animation-play-state:paused;transform:scaleY(.3);}
 
-/* COUPLE ANIMATION */
 .couple-scene{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);z-index:1;pointer-events:none;opacity:0;animation:coupleAppear 2s ease 0.5s forwards;}
 @keyframes coupleAppear{0%{opacity:0;transform:translateX(-50%) scale(0.8);}100%{opacity:1;transform:translateX(-50%) scale(1);}}
 .couple-figures{display:flex;align-items:flex-end;gap:clamp(10px,3vw,20px);filter:drop-shadow(0 10px 30px rgba(0,0,0,0.5));}
@@ -70,7 +68,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .heart-float{position:absolute;top:-60px;left:50%;transform:translateX(-50%);font-size:clamp(1.2rem,3vw,1.6rem);animation:heartFloat 2s ease-in-out infinite;}
 @keyframes heartFloat{0%,100%{transform:translateX(-50%) translateY(0);opacity:0.8;}50%{transform:translateX(-50%) translateY(-10px);opacity:1;}}
 
-/* HERO */
 .hero{min-height:100svh;display:grid;align-items:center;justify-items:center;text-align:center;position:relative;z-index:2;padding:clamp(1.5rem,5vw,3rem) clamp(1rem,4vw,2rem);overflow:hidden;}
 .hero::before,.hero::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent 5%,rgba(200,149,42,.18) 30%,rgba(200,149,42,.35) 50%,rgba(200,149,42,.18) 70%,transparent 95%);pointer-events:none;}
 .hero::before{left:clamp(1rem,4vw,2.5rem);}.hero::after{right:clamp(1rem,4vw,2.5rem);}
@@ -110,7 +107,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .open-btn:active{transform:scale(.95);}
 .flower-row-sm{font-size:clamp(1rem,4vw,1.6rem);}
 
-/* PASSWORD */
 #pwOverlay{position:fixed;inset:0;background:rgba(4,0,8,.97);backdrop-filter:blur(24px);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .4s ease;}
 #pwOverlay.show{opacity:1;pointer-events:all;}
 .pw-box{max-width:320px;width:100%;transform:translateY(30px);transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
@@ -137,14 +133,12 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .pw-hint{font-family:'Playfair Display',serif;font-size:clamp(.6rem,2.5vw,.7rem);font-style:italic;color:rgba(244,167,185,.2);}
 .pw-error{font-size:.74rem;color:#ff8888;margin-top:.45rem;min-height:1.1em;font-style:italic;}
 
-/* SLIDESHOW */
 #slideshow{position:fixed;inset:0;z-index:400;background:rgba(4,0,8,.98);display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
 #slideshow.show{display:flex;}
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(.8rem,3vw,1.5rem) clamp(.8rem,3vw,1.5rem) 4.5rem;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.2,.64,1);transform:translateX(60px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
 .slide.exit-left{opacity:0;transform:translateX(-60px);pointer-events:none;}
 
-/* CLOCK */
 .lc-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:96vw;width:100%;padding:0 .5rem;position:relative;z-index:5;}
 .lc-badge{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.3vw,.44rem);letter-spacing:.42em;text-transform:uppercase;color:rgba(200,149,42,.4);text-align:center;}
 .lc-title{font-family:'Great Vibes',cursive;font-size:clamp(1.9rem,7.5vw,3.5rem);color:var(--cream);text-align:center;text-shadow:0 0 40px rgba(255,200,210,.12);line-height:1.1;}
@@ -169,17 +163,13 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .lc-hearts span:nth-child(4){animation-delay:.2s;font-size:.7rem;}
 .lc-hearts span:nth-child(5){animation-delay:.4s;}
 
-/* PHOTO SLIDES */
 .mem-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.38rem,1.6vw,.72rem);width:100%;max-width:min(340px,90vw);}
 .mem-badge{font-family:'Cinzel',serif;font-size:clamp(.34rem,1.3vw,.43rem);letter-spacing:.38em;text-transform:uppercase;color:rgba(200,149,42,.38);}
 .mem-title{font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,6vw,2.4rem);color:var(--cream);text-align:center;}
-
-/* FLOWER FRAME */
 .mem-card{position:relative;padding:clamp(.5rem,2vw,.9rem);box-shadow:0 18px 50px rgba(0,0,0,.65),0 4px 16px rgba(176,31,66,.22);transform:rotate(var(--rot,0deg));transition:transform .4s;width:100%;background:linear-gradient(145deg,#fdf8f2,#fef0f4);}
 .mem-card:hover{transform:rotate(0deg) scale(1.02);}
 .mem-photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(.06) contrast(1.04) brightness(1.02);}
 .mem-num{position:absolute;top:.42rem;right:.52rem;font-family:'Cinzel',serif;font-size:.34rem;letter-spacing:.22em;color:rgba(176,31,66,.28);text-transform:uppercase;}
-/* Flower frame corners */
 .frame-fl{position:absolute;font-size:1.5rem;line-height:1;pointer-events:none;animation:sway 3s ease-in-out infinite;z-index:2;}
 .frame-fl.ftl{top:-14px;left:-8px;animation-delay:0s;}
 .frame-fl.ftr{top:-14px;right:-8px;animation-delay:.3s;}
@@ -187,21 +177,17 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .frame-fl.fbr{bottom:-14px;right:-8px;animation-delay:.9s;}
 .frame-fl.ftm{top:-16px;left:50%;transform:translateX(-50%);animation-delay:.15s;}
 .frame-fl.fbm{bottom:-16px;left:50%;transform:translateX(-50%);animation-delay:.45s;}
-
 .mem-caption{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.74rem,2.8vw,.88rem);font-style:italic;color:rgba(244,167,185,.55);line-height:1.7;text-align:center;max-width:min(310px,86vw);}
 .mem-heart{font-size:.85rem;color:rgba(232,48,90,.4);animation:heartbeat 1.6s ease-in-out infinite;text-align:center;}
 
-/* SWIPE DOTS */
 .swipe-dots{display:flex;gap:6px;justify-content:center;}
 .sw-dot{width:7px;height:7px;border-radius:50%;background:rgba(200,149,42,.2);border:1px solid rgba(200,149,42,.3);transition:all .3s;}
 .sw-dot.on{background:var(--gold2);transform:scale(1.35);box-shadow:0 0 6px rgba(200,149,42,.6);}
 
-/* SAVE/SHARE */
 .photo-actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;}
 .act-btn{background:rgba(200,149,42,.08);backdrop-filter:blur(8px);border:1px solid rgba(200,149,42,.28);color:var(--gold2);border-radius:50px;padding:.5rem 1.2rem;font-size:clamp(.55rem,2.2vw,.68rem);font-family:'Cinzel',serif;letter-spacing:.15em;cursor:pointer;transition:background .2s,transform .15s;}
 .act-btn:hover{background:rgba(200,149,42,.18);transform:translateY(-2px);}
 
-/* MSG */
 .msg-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.55rem,2.2vw,.95rem);max-width:min(340px,88vw);text-align:center;}
 .msg-icon{font-size:clamp(1.9rem,7.5vw,3rem);animation:heartbeat 1.8s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(232,48,90,.6));}
 .msg-title{font-family:'Great Vibes',cursive;font-size:clamp(1.65rem,6.8vw,2.9rem);color:var(--cream);line-height:1.1;}
@@ -215,7 +201,38 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .msg-hearts span:nth-child(2){animation-delay:.2s;font-size:.7rem;}
 .msg-hearts span:nth-child(3){animation-delay:.4s;}
 
-/* OPEN LETTER SLIDE */
+/* ═══ FLOWER WATERING SLIDE ═══ */
+.water-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,2.2vw,1rem);max-width:min(340px,88vw);text-align:center;}
+.water-title{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,6.5vw,2.6rem);color:var(--cream);line-height:1.1;}
+.water-title span{color:var(--rose2);filter:drop-shadow(0 0 18px rgba(232,48,90,.6));}
+.water-sub{font-family:'Playfair Display',serif;font-size:clamp(.76rem,2.9vw,.9rem);font-style:italic;color:rgba(244,167,185,.45);line-height:1.8;}
+.flower-pot-scene{position:relative;width:clamp(160px,45vw,220px);height:clamp(180px,50vw,240px);cursor:pointer;user-select:none;-webkit-user-select:none;}
+.flower-pot-scene:active{transform:scale(.97);}
+.pot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:clamp(70px,20vw,90px);height:clamp(55px,16vw,70px);background:linear-gradient(180deg,#c0632a,#8b3a18);border-radius:4px 4px 16px 16px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.pot::before{content:'';position:absolute;top:-10px;left:-8px;right:-8px;height:14px;background:linear-gradient(180deg,#d47030,#b05520);border-radius:6px;}
+.soil{position:absolute;bottom:calc(clamp(55px,16vw,70px) - 4px);left:50%;transform:translateX(-50%);width:clamp(54px,16vw,70px);height:10px;background:#3d1f0a;border-radius:50%;}
+.stem{position:absolute;bottom:calc(clamp(55px,16vw,70px) + 6px);left:50%;transform:translateX(-50%);width:4px;background:linear-gradient(180deg,#2d7a2d,#1a5c1a);border-radius:2px;transition:height .5s cubic-bezier(.34,1.56,.64,1);height:0;}
+.leaves{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:4px;pointer-events:none;}
+.leaf{position:absolute;font-size:clamp(1rem,3.5vw,1.4rem);opacity:0;transition:opacity .4s,transform .4s;transform-origin:bottom center;}
+.leaf.l1{bottom:30%;left:-22px;transform:rotate(-40deg) scale(0);}
+.leaf.l2{bottom:50%;right:-22px;transform:rotate(40deg) scale(0);}
+.leaf.l3{bottom:65%;left:-20px;transform:rotate(-30deg) scale(0);}
+.leaf.show{opacity:1;}
+.leaf.l1.show{transform:rotate(-40deg) scale(1);}
+.leaf.l2.show{transform:rotate(40deg) scale(1);}
+.leaf.l3.show{transform:rotate(-30deg) scale(1);}
+.flower-bloom{position:absolute;top:0;left:50%;transform:translateX(-50%) scale(0);font-size:clamp(2rem,7vw,3rem);opacity:0;transition:transform .6s cubic-bezier(.34,1.8,.64,1),opacity .5s;transform-origin:bottom center;filter:drop-shadow(0 0 12px rgba(255,100,150,.8));}
+.flower-bloom.show{transform:translateX(-50%) scale(1);opacity:1;}
+.water-drops{position:absolute;pointer-events:none;top:0;left:0;width:100%;height:100%;}
+.wdrop{position:absolute;font-size:.8rem;animation:waterFall .8s ease forwards;}
+@keyframes waterFall{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(60px);}}
+.water-progress{display:flex;gap:.5rem;justify-content:center;align-items:center;}
+.wp-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(100,180,255,.4);background:transparent;transition:all .4s;}
+.wp-dot.watered{background:radial-gradient(circle,#80cfff,#4499dd);border-color:#80cfff;box-shadow:0 0 8px rgba(100,180,255,.7);}
+.water-hint{font-family:'Cinzel',serif;font-size:clamp(.38rem,1.5vw,.48rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(200,149,42,.35);}
+.water-complete-msg{font-family:'Great Vibes',cursive;font-size:clamp(1.1rem,4.5vw,1.6rem);color:var(--rose2);opacity:0;transition:opacity .6s;filter:drop-shadow(0 0 14px rgba(232,48,90,.6));}
+.water-complete-msg.show{opacity:1;}
+
 .letter-slide-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.5rem,2vw,.85rem);max-width:min(340px,88vw);text-align:center;}
 .letter-slide-icon{font-size:clamp(2.3rem,8.5vw,3.7rem);animation:heartbeat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(232,48,90,.7));}
 .letter-slide-title{font-family:'Great Vibes',cursive;font-size:clamp(1.85rem,7.5vw,3.5rem);color:var(--cream);}
@@ -228,17 +245,14 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .btn-open-letter{background:linear-gradient(135deg,rgba(176,31,66,.35),rgba(200,149,42,.15));border:1px solid rgba(200,149,42,.45);color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(.48rem,1.9vw,.6rem);letter-spacing:.28em;text-transform:uppercase;padding:.85rem 1.8rem;cursor:pointer;min-height:52px;width:min(270px,78vw);display:inline-flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 0 30px rgba(176,31,66,.28);transition:all .3s;position:relative;overflow:hidden;}
 .btn-open-letter:active{transform:scale(.95);}
 
-/* NEXT BTN */
 .btn-next{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(176,31,66,.25),rgba(200,149,42,.1));border:1px solid rgba(200,149,42,.38);color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(.44rem,1.7vw,.54rem);letter-spacing:.28em;text-transform:uppercase;padding:.6rem 1.5rem;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;box-shadow:0 0 20px rgba(176,31,66,.16);transition:all .3s;margin-top:clamp(.15rem,.8vw,.35rem);}
 .btn-next:active{transform:scale(.94);}
 
-/* PROGRESS DOTS */
 #slideDots{position:fixed;bottom:.75rem;left:50%;transform:translateX(-50%);z-index:9999;display:none;gap:.5rem;align-items:center;}
 #slideDots.show{display:flex;}
 .sdot{width:6px;height:6px;border-radius:50%;border:1.5px solid rgba(200,149,42,.28);background:transparent;transition:all .35s;}
 .sdot.on{background:var(--gold2);border-color:var(--gold2);box-shadow:0 0 7px rgba(200,149,42,.7);transform:scale(1.35);}
 
-/* LETTER */
 #letterOverlay{position:fixed;inset:0;background:rgba(4,0,2,.96);backdrop-filter:blur(20px);z-index:600;display:flex;align-items:flex-start;justify-content:center;padding:clamp(.5rem,2vw,.9rem);opacity:0;pointer-events:none;transition:opacity .5s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 #letterOverlay.show{opacity:1;pointer-events:all;}
 .letter-wrap{max-width:520px;width:100%;position:relative;margin:clamp(.6rem,2.5vw,1.2rem) 0 clamp(1.2rem,4vw,2rem);transform:translateY(32px) scale(.93);transition:transform .7s cubic-bezier(.34,1.4,.64,1);}
@@ -272,11 +286,8 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .letter-close{position:absolute;top:-13px;right:-13px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b01f42,#6a0820);border:1px solid rgba(200,149,42,.2);color:#ffe8ef;font-size:.78rem;cursor:pointer;box-shadow:0 4px 12px rgba(180,20,60,.48);display:flex;align-items:center;justify-content:center;transition:transform .2s;}
 .letter-close:active{transform:scale(.9);}
 
-/* CONFETTI */
 .conf-p{position:fixed;pointer-events:none;z-index:450;border-radius:1px;animation:confD var(--cd,2s) linear var(--cdelay,0s) forwards;}
 @keyframes confD{0%{transform:translateY(-15px) rotate(0);opacity:1;}100%{transform:translateY(108vh) rotate(720deg) translateX(var(--ctx,0px));opacity:0;}}
-
-/* FIREWORKS */
 .fw-p{position:fixed;pointer-events:none;border-radius:50%;animation:fwFly linear forwards;z-index:9997;}
 @keyframes fwFly{0%{transform:translate(0,0) scale(1.2);opacity:1;}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0;}}
 </style>
@@ -287,14 +298,10 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 <div id="petals"></div>
 <div class="flash" id="flash"></div>
 
-<!-- MUSIC BTN -->
 <button id="musicBtn" title="Nhạc nền">
   <div class="eq">
-    <div class="eq-bar"></div>
-    <div class="eq-bar"></div>
-    <div class="eq-bar"></div>
-    <div class="eq-bar"></div>
-    <div class="eq-bar"></div>
+    <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+    <div class="eq-bar"></div><div class="eq-bar"></div>
   </div>
 </button>
 
@@ -354,10 +361,8 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
       <div class="pw-title">Nhập Mật Khẩu</div>
       <div class="pw-sub">✦ chỉ Tien mới biết thui nhé ✦</div>
       <div class="pw-dots">
-        <div class="pw-dot" id="d0"></div>
-        <div class="pw-dot" id="d1"></div>
-        <div class="pw-dot" id="d2"></div>
-        <div class="pw-dot" id="d3"></div>
+        <div class="pw-dot" id="d0"></div><div class="pw-dot" id="d1"></div>
+        <div class="pw-dot" id="d2"></div><div class="pw-dot" id="d3"></div>
       </div>
       <div class="numpad">
         <button class="num-btn" data-n="1">1</button>
@@ -384,22 +389,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 
   <!-- SLIDE 0: Clock -->
   <div class="slide active" id="s0">
-    <div class="couple-scene">
-      <div class="couple-figures">
-        <div class="boy">
-          <div class="boy-body"></div>
-          <div class="boy-head"><div class="boy-hair"></div></div>
-          <div class="boy-arm"><div class="boy-hand"></div></div>
-          <div class="flowers-bouquet">💐</div>
-        </div>
-        <div class="heart-float">💕</div>
-        <div class="girl">
-          <div class="girl-body"><div class="girl-dress"></div></div>
-          <div class="girl-head"><div class="girl-hair"></div></div>
-          <div class="girl-arm"></div>
-        </div>
-      </div>
-    </div>
     <div class="lc-wrap">
       <div class="lc-badge">✦ Chúng Mình Đã Bên Nhau ✦</div>
       <div class="lc-title">Tình Yêu Của <span>Chúng Ta</span> 💕</div>
@@ -507,7 +496,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
     </div>
   </div>
 
-  <!-- SLIDE 5 -->
+  <!-- SLIDE 5: Message -->
   <div class="slide" id="s5">
     <div class="msg-wrap">
       <div class="msg-icon">🌹</div>
@@ -520,8 +509,43 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
     </div>
   </div>
 
-  <!-- SLIDE 6 -->
+  <!-- SLIDE 6: FLOWER WATERING 🌱 -->
   <div class="slide" id="s6">
+    <div class="water-wrap">
+      <div class="lc-badge">✦ Tặng Em Một Điều Nhỏ ✦</div>
+      <div class="water-title">Tưới Hoa Cho <span>Tien</span> Nha 🌿</div>
+      <div class="water-sub">Nhấn vào bông hoa 5 lần<br>để tưới và xem điều kỳ diệu 💧</div>
+
+      <!-- Flower pot -->
+      <div class="flower-pot-scene" id="flowerScene" onclick="waterFlower()">
+        <div class="water-drops" id="waterDrops"></div>
+        <div class="flower-bloom" id="flowerBloom">🌹</div>
+        <div class="stem" id="flowerStem">
+          <div class="leaves">
+            <span class="leaf l1" id="leaf1">🍃</span>
+            <span class="leaf l2" id="leaf2">🍃</span>
+            <span class="leaf l3" id="leaf3">🍃</span>
+          </div>
+        </div>
+        <div class="soil"></div>
+        <div class="pot"></div>
+      </div>
+
+      <!-- Progress dots -->
+      <div class="water-progress">
+        <div class="wp-dot" id="wp0"></div>
+        <div class="wp-dot" id="wp1"></div>
+        <div class="wp-dot" id="wp2"></div>
+        <div class="wp-dot" id="wp3"></div>
+        <div class="wp-dot" id="wp4"></div>
+      </div>
+      <div class="water-hint" id="waterHint">💧 Chạm vào hoa để tưới · 0 / 5</div>
+      <div class="water-complete-msg" id="waterCompleteMsg">Hoa nở rồi! Em là bông hoa đẹp nhất 🌹</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Letter intro -->
+  <div class="slide" id="s7">
     <div class="letter-slide-wrap">
       <div class="letter-slide-icon">💌</div>
       <div class="letter-slide-title">Có Một Bức Thư<br><span>Dành Cho Em</span></div>
@@ -532,12 +556,12 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
   </div>
 </div>
 
-<!-- Dots -->
+<!-- Dots (8 slides now) -->
 <div id="slideDots">
   <div class="sdot on" id="sd0"></div><div class="sdot" id="sd1"></div>
   <div class="sdot" id="sd2"></div><div class="sdot" id="sd3"></div>
   <div class="sdot" id="sd4"></div><div class="sdot" id="sd5"></div>
-  <div class="sdot" id="sd6"></div>
+  <div class="sdot" id="sd6"></div><div class="sdot" id="sd7"></div>
 </div>
 
 <!-- LETTER -->
@@ -586,183 +610,131 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 </div>
 
 <script>
-// ═══════════════════════════════════════
-// 🎵 NHẠC NỀN — giai điệu lãng mạn nhẹ nhàng
-// ═══════════════════════════════════════
-let actx = null;
-let musicOn = false;
-let musicTimeout = null;
-let masterGain = null;
-
-function initAudio(){
-  if(actx) return;
-  actx = new (window.AudioContext || window.webkitAudioContext)();
-  masterGain = actx.createGain();
-  masterGain.gain.value = 0.13;
-  masterGain.connect(actx.destination);
-}
-
-// Giai điệu lãng mạn — La minor, nhịp chậm
-// Melody + chord pad + bass
-const BPM = 58;
-const BEAT = 60 / BPM;
-const BAR = BEAT * 4;
-
-// Chord pads (Am, F, C, G)
-const chords = [
-  [220, 261.63, 329.63],   // Am
-  [174.61, 220, 261.63],   // F
-  [130.81, 164.81, 196],   // C
-  [196, 246.94, 293.66],   // G
-];
-
-// Melody notes (freq, beat offset, duration in beats)
-const melNotes = [
-  // Bar 1 Am
+// ═══ MUSIC ═══
+let actx=null,musicOn=false,musicTimeout=null,masterGain=null;
+const BPM=58,BEAT=60/BPM,BAR=BEAT*4;
+const chords=[[220,261.63,329.63],[174.61,220,261.63],[130.81,164.81,196],[196,246.94,293.66]];
+const melNotes=[
   [440,0,.8],[392,1,.8],[349.23,2,1.2],[329.63,3,.8],
-  // Bar 2 F
   [349.23,4,.8],[329.63,5,.8],[293.66,6,1.2],[261.63,7,.8],
-  // Bar 3 C
   [261.63,8,.8],[293.66,9,.8],[329.63,10,1.2],[349.23,11,.8],
-  // Bar 4 G
   [392,12,.8],[349.23,13,.8],[329.63,14,1.2],[293.66,15,.8],
-  // Bar 5 Am
   [440,16,1.6],[392,17.5,.8],[349.23,18.5,.8],[329.63,19.5,.8],
-  // Bar 6 F
   [349.23,20,1.2],[293.66,21,.8],[261.63,22,2],
-  // Bar 7 C
   [261.63,24,.8],[293.66,25,.8],[329.63,26,.8],[349.23,27,.8],
-  // Bar 8 G→Am
   [392,28,1.6],[329.63,30,2],
 ];
-
-const TOTAL_BARS = 8;
-
-function playNote(freq, startT, durBeats, type='sine', vol=0.22){
-  if(!actx || !musicOn) return;
-  const osc = actx.createOscillator();
-  const g = actx.createGain();
-  const dur = durBeats * BEAT;
-  osc.type = type;
-  osc.frequency.value = freq;
-  // Vibrato
-  const vib = actx.createOscillator();
-  const vibG = actx.createGain();
-  vib.frequency.value = 5.2;
-  vibG.gain.value = 2.5;
-  vib.connect(vibG);
-  vibG.connect(osc.frequency);
-  vib.start(startT);
-  vib.stop(startT + dur + 0.1);
-  // Envelope
-  const now = startT;
-  g.gain.setValueAtTime(0, now);
-  g.gain.linearRampToValueAtTime(vol, now + 0.06);
-  g.gain.setValueAtTime(vol, now + dur - 0.1);
-  g.gain.linearRampToValueAtTime(0, now + dur);
-  osc.connect(g);
-  g.connect(masterGain);
-  osc.start(now);
-  osc.stop(now + dur + 0.05);
+function initAudio(){
+  if(actx)return;
+  actx=new(window.AudioContext||window.webkitAudioContext)();
+  masterGain=actx.createGain();
+  masterGain.gain.value=0.13;
+  masterGain.connect(actx.destination);
 }
-
-function playChordPad(freqs, startT, durBeats, vol=0.055){
-  if(!actx || !musicOn) return;
-  freqs.forEach((f,i) => {
-    const osc = actx.createOscillator();
-    const g = actx.createGain();
-    const dur = durBeats * BEAT;
-    osc.type = 'sine';
-    osc.frequency.value = f;
-    const now = startT;
-    g.gain.setValueAtTime(0, now);
-    g.gain.linearRampToValueAtTime(vol, now + 0.25);
-    g.gain.setValueAtTime(vol * 0.85, now + dur - 0.3);
-    g.gain.linearRampToValueAtTime(0, now + dur);
-    osc.connect(g);
-    g.connect(masterGain);
-    osc.start(now);
-    osc.stop(now + dur + 0.05);
+function playNote(freq,startT,durBeats,vol=0.18){
+  if(!actx||!musicOn)return;
+  const osc=actx.createOscillator(),g=actx.createGain(),dur=durBeats*BEAT;
+  osc.type='sine';osc.frequency.value=freq;
+  const vib=actx.createOscillator(),vibG=actx.createGain();
+  vib.frequency.value=5.2;vibG.gain.value=2.5;
+  vib.connect(vibG);vibG.connect(osc.frequency);
+  vib.start(startT);vib.stop(startT+dur+0.1);
+  g.gain.setValueAtTime(0,startT);
+  g.gain.linearRampToValueAtTime(vol,startT+0.06);
+  g.gain.setValueAtTime(vol,startT+dur-0.1);
+  g.gain.linearRampToValueAtTime(0,startT+dur);
+  osc.connect(g);g.connect(masterGain);
+  osc.start(startT);osc.stop(startT+dur+0.05);
+}
+function playChordPad(freqs,startT,durBeats,vol=0.05){
+  if(!actx||!musicOn)return;
+  freqs.forEach(f=>{
+    const osc=actx.createOscillator(),g=actx.createGain(),dur=durBeats*BEAT;
+    osc.type='sine';osc.frequency.value=f;
+    g.gain.setValueAtTime(0,startT);
+    g.gain.linearRampToValueAtTime(vol,startT+0.25);
+    g.gain.setValueAtTime(vol*.85,startT+dur-0.3);
+    g.gain.linearRampToValueAtTime(0,startT+dur);
+    osc.connect(g);g.connect(masterGain);
+    osc.start(startT);osc.stop(startT+dur+0.05);
   });
 }
-
-function playBass(freq, startT, durBeats, vol=0.1){
-  if(!actx || !musicOn) return;
-  const osc = actx.createOscillator();
-  const g = actx.createGain();
-  const dur = durBeats * BEAT;
-  osc.type = 'triangle';
-  osc.frequency.value = freq / 2;
-  const now = startT;
-  g.gain.setValueAtTime(0, now);
-  g.gain.linearRampToValueAtTime(vol, now + 0.08);
-  g.gain.setValueAtTime(vol * 0.7, now + dur - 0.1);
-  g.gain.linearRampToValueAtTime(0, now + dur);
-  osc.connect(g);
-  g.connect(masterGain);
-  osc.start(now);
-  osc.stop(now + dur + 0.05);
+function playBass(freq,startT,durBeats,vol=0.09){
+  if(!actx||!musicOn)return;
+  const osc=actx.createOscillator(),g=actx.createGain(),dur=durBeats*BEAT;
+  osc.type='triangle';osc.frequency.value=freq/2;
+  g.gain.setValueAtTime(0,startT);
+  g.gain.linearRampToValueAtTime(vol,startT+0.08);
+  g.gain.setValueAtTime(vol*.7,startT+dur-0.1);
+  g.gain.linearRampToValueAtTime(0,startT+dur);
+  osc.connect(g);g.connect(masterGain);
+  osc.start(startT);osc.stop(startT+dur+0.05);
 }
-
-function scheduleMusic(offset){
-  if(!musicOn || !actx) return;
-  const startT = actx.currentTime + 0.05;
-  const totalDur = TOTAL_BARS * BAR;
-
-  // Chord pads — one per bar
-  chords.forEach((ch, i) => {
-    playChordPad(ch, startT + i * BAR, 4, 0.05);
-    // Bass root
-    playBass(ch[0], startT + i * BAR, 4, 0.09);
-    playBass(ch[0], startT + i * BAR + BEAT * 2, 2, 0.065);
+function scheduleMusic(){
+  if(!musicOn||!actx)return;
+  const startT=actx.currentTime+0.05;
+  const totalDur=8*BAR;
+  chords.forEach((ch,i)=>{
+    playChordPad(ch,startT+i*BAR,4,0.05);
+    playBass(ch[0],startT+i*BAR,4,0.09);
+    playBass(ch[0],startT+i*BAR+BEAT*2,2,0.065);
   });
-
-  // Melody
-  melNotes.forEach(([f, beatOff, dur]) => {
-    playNote(f, startT + beatOff * BEAT, dur, 'sine', 0.18);
-  });
-
-  // Schedule loop
-  musicTimeout = setTimeout(() => {
-    if(musicOn) scheduleMusic(0);
-  }, (totalDur - 0.2) * 1000);
+  melNotes.forEach(([f,b,d])=>playNote(f,startT+b*BEAT,d));
+  musicTimeout=setTimeout(()=>{if(musicOn)scheduleMusic();},(totalDur-.2)*1000);
 }
-
 function startMusic(){
   initAudio();
-  if(actx.state === 'suspended') actx.resume();
-  musicOn = true;
+  if(actx.state==='suspended')actx.resume();
+  musicOn=true;
   document.getElementById('musicBtn').classList.remove('paused');
-  scheduleMusic(0);
+  scheduleMusic();
 }
 function stopMusic(){
-  musicOn = false;
+  musicOn=false;
   clearTimeout(musicTimeout);
   document.getElementById('musicBtn').classList.add('paused');
 }
-
-document.getElementById('musicBtn').addEventListener('click', () => {
-  if(musicOn) stopMusic(); else startMusic();
+document.getElementById('musicBtn').addEventListener('click',()=>{
+  if(musicOn)stopMusic();else startMusic();
 });
 
-// Auto-start on first interaction
-let autoStarted = false;
-function tryAutoStart(){
-  if(autoStarted) return;
-  autoStarted = true;
-  startMusic();
-}
-document.addEventListener('touchstart', tryAutoStart, {once:true, passive:true});
-document.addEventListener('click', tryAutoStart, {once:true});
+// AUTO-START music immediately on page load
+window.addEventListener('load',()=>{
+  // Try direct autoplay first
+  try{
+    initAudio();
+    if(actx.state==='running'){startMusic();}
+    else{
+      // If suspended, start on first interaction
+      const go=()=>{
+        if(!musicOn){
+          if(actx.state==='suspended')actx.resume().then(()=>startMusic());
+          else startMusic();
+        }
+        document.removeEventListener('touchstart',go);
+        document.removeEventListener('click',go);
+        document.removeEventListener('keydown',go);
+      };
+      document.addEventListener('touchstart',go,{once:true,passive:true});
+      document.addEventListener('click',go,{once:true});
+      document.addEventListener('keydown',go,{once:true});
+      // Also attempt after short delay (some browsers allow after load)
+      setTimeout(()=>{
+        if(!musicOn){
+          initAudio();
+          if(actx&&actx.state==='running')startMusic();
+        }
+      },300);
+    }
+  }catch(e){}
+});
 
 // ─── COUNTER ───
-const START = new Date('2026-01-01T00:00:00');
+const START=new Date('2026-01-01T00:00:00');
 function updateCounter(){
-  const diff = Math.max(0, Date.now() - START);
-  const d = Math.floor(diff/864e5);
-  const h = Math.floor((diff%864e5)/36e5);
-  const m = Math.floor((diff%36e5)/6e4);
-  const s = Math.floor((diff%6e4)/1000);
+  const diff=Math.max(0,Date.now()-START);
+  const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5);
+  const m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1000);
   const ids=['lcD','lcH','lcM','lcS'];
   const vals=[String(d),String(h).padStart(2,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')];
   vals.forEach((v,i)=>{
@@ -770,8 +742,7 @@ function updateCounter(){
     if(el&&el.textContent!==v){el.textContent=v;el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
   });
 }
-updateCounter();
-setInterval(updateCounter,1000);
+updateCounter();setInterval(updateCounter,1000);
 
 // ─── STARS ───
 const stEl=document.getElementById('stars');
@@ -825,14 +796,11 @@ function fireworks(){
   const cols=['#e8305a','#c8952a','#f0c96a','#ff9db5','#fff','#ff6b9d','#ffe8a0'];
   for(let b=0;b<7;b++){
     setTimeout(()=>{
-      const cx=15+Math.random()*70+'vw';
-      const cy=10+Math.random()*50+'vh';
+      const cx=15+Math.random()*70+'vw',cy=10+Math.random()*50+'vh';
       for(let i=0;i<28;i++){
         const p=document.createElement('div');p.className='fw-p';
         const ang=Math.random()*360,dist=70+Math.random()*130;
-        const tx=Math.cos(ang*Math.PI/180)*dist+'px';
-        const ty=Math.sin(ang*Math.PI/180)*dist+'px';
-        p.style.cssText=`left:${cx};top:${cy};width:${5+Math.random()*5}px;height:${5+Math.random()*5}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${tx};--ty:${ty};animation-duration:${.7+Math.random()*.7}s;animation-delay:${Math.random()*.25}s;`;
+        p.style.cssText=`left:${cx};top:${cy};width:${5+Math.random()*5}px;height:${5+Math.random()*5}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang*Math.PI/180)*dist}px;--ty:${Math.sin(ang*Math.PI/180)*dist}px;animation-duration:${.7+Math.random()*.7}s;animation-delay:${Math.random()*.25}s;`;
         document.body.appendChild(p);
         setTimeout(()=>p.remove(),1800);
       }
@@ -840,21 +808,74 @@ function fireworks(){
   }
 }
 
-// ─── SLIDESHOW ───
+// ─── SLIDESHOW (8 slides: 0-7) ───
 const SS=document.getElementById('slideshow');
 const DOTS=document.getElementById('slideDots');
 let cur=0;
-const TOTAL=7;
+const TOTAL=8;
 function goSlide(n){
-  if(n<0||n>=TOTAL) return;
+  if(n<0||n>=TOTAL)return;
   const slides=document.querySelectorAll('.slide');
   slides[cur].classList.remove('active');
   slides[cur].classList.add('exit-left');
-  const prev=cur; cur=n;
+  const prev=cur;cur=n;
   setTimeout(()=>slides[prev].classList.remove('exit-left'),600);
   slides[cur].classList.add('active');
   document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===cur));
   slides[cur].scrollTop=0;
+}
+
+// ─── FLOWER WATERING ───
+let waterCount=0;
+const WATER_MAX=5;
+let waterDone=false;
+
+function waterFlower(){
+  if(waterDone)return;
+  waterCount++;
+  // Update progress dot
+  const dot=document.getElementById('wp'+(waterCount-1));
+  if(dot)dot.classList.add('watered');
+  // Water drop animation
+  spawnWaterDrops();
+  // Grow stem
+  const stemH=[0,20,35,50,65,85];
+  const stem=document.getElementById('flowerStem');
+  stem.style.height=stemH[waterCount]+'px';
+  // Leaves appear
+  if(waterCount>=2)document.getElementById('leaf1').classList.add('show');
+  if(waterCount>=3)document.getElementById('leaf2').classList.add('show');
+  if(waterCount>=4)document.getElementById('leaf3').classList.add('show');
+  // Bloom at 5
+  if(waterCount>=WATER_MAX){
+    waterDone=true;
+    setTimeout(()=>{
+      document.getElementById('flowerBloom').classList.add('show');
+      document.getElementById('waterCompleteMsg').classList.add('show');
+      document.getElementById('waterHint').textContent='🌹 Hoa đã nở rồi!';
+      confetti(40);
+      // Auto next after 2.5s
+      setTimeout(()=>goSlide(7),2500);
+    },400);
+  } else {
+    document.getElementById('waterHint').textContent='💧 Chạm vào hoa để tưới · '+waterCount+' / '+WATER_MAX;
+  }
+}
+
+function spawnWaterDrops(){
+  const scene=document.getElementById('flowerScene');
+  const drops=['💧','💦','🌊'];
+  const rect=scene.getBoundingClientRect();
+  for(let i=0;i<4;i++){
+    setTimeout(()=>{
+      const d=document.createElement('div');
+      d.className='wdrop';
+      d.textContent=drops[Math.floor(Math.random()*drops.length)];
+      d.style.cssText=`left:${20+Math.random()*60}%;top:${10+Math.random()*30}%;font-size:${.7+Math.random()*.5}rem;animation-delay:${Math.random()*.2}s;`;
+      document.getElementById('waterDrops').appendChild(d);
+      setTimeout(()=>d.remove(),1000);
+    },i*80);
+  }
 }
 
 // ─── PASSWORD ───
@@ -883,6 +904,14 @@ function chkPw(){
     document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===0));
     SS.classList.add('show');DOTS.classList.add('show');
     confetti(50);
+    // reset flower
+    waterCount=0;waterDone=false;
+    document.getElementById('flowerStem').style.height='0';
+    document.getElementById('flowerBloom').classList.remove('show');
+    document.getElementById('waterCompleteMsg').classList.remove('show');
+    document.getElementById('waterHint').textContent='💧 Chạm vào hoa để tưới · 0 / 5';
+    for(let i=0;i<5;i++){const d=document.getElementById('wp'+i);if(d)d.classList.remove('watered');}
+    ['leaf1','leaf2','leaf3'].forEach(id=>document.getElementById(id).classList.remove('show'));
   } else {
     errShake('Sai rồi bà ơi, thử lại nha 🥺');
   }
@@ -914,14 +943,9 @@ document.getElementById('letterClose').addEventListener('click',()=>ltOv.classLi
 ltOv.addEventListener('pointerdown',e=>{if(e.target===ltOv)ltOv.classList.remove('show');});
 
 // ─── SAVE & SHARE ───
-function saveImg(url, n){
-  const a=document.createElement('a');
-  a.href=url; a.download='kyNiem-'+n+'.jpg';
-  a.target='_blank'; a.click();
-}
+function saveImg(url,n){const a=document.createElement('a');a.href=url;a.download='kyNiem-'+n+'.jpg';a.target='_blank';a.click();}
 function sharePg(){
-  const txt='💕 Trang kỷ niệm 8/3 dành cho Tien yêu 🌹';
-  if(navigator.share){navigator.share({title:'Chúc Mừng 8/3 💕',text:txt,url:location.href});}
+  if(navigator.share){navigator.share({title:'Chúc Mừng 8/3 💕',text:'💕 Trang kỷ niệm 8/3 dành cho Tien yêu 🌹',url:location.href});}
   else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('✅ Đã sao chép link! 💕'));}
 }
 </script>
