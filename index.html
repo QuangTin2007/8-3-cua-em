@@ -107,9 +107,10 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .open-btn:active{transform:scale(.95);}
 .flower-row-sm{font-size:clamp(1rem,4vw,1.6rem);}
 
+/* ═══ PASSWORD OVERLAY — TEXT INPUT ═══ */
 #pwOverlay{position:fixed;inset:0;background:rgba(4,0,8,.97);backdrop-filter:blur(24px);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .4s ease;}
 #pwOverlay.show{opacity:1;pointer-events:all;}
-.pw-box{max-width:320px;width:100%;transform:translateY(30px);transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
+.pw-box{max-width:340px;width:100%;transform:translateY(30px);transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
 #pwOverlay.show .pw-box{transform:translateY(0);}
 .pw-inner{background:linear-gradient(160deg,#140010,#220018,#160010);border:1px solid rgba(200,149,42,.2);padding:clamp(1.4rem,4vw,2.2rem) clamp(1.1rem,3.5vw,1.8rem);text-align:center;position:relative;box-shadow:0 45px 100px rgba(0,0,0,.9),inset 0 1px 0 rgba(200,149,42,.08);}
 .pw-inner::before,.pw-inner::after{content:'◆';position:absolute;font-size:.38rem;color:rgba(200,149,42,.25);}
@@ -120,18 +121,37 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 @keyframes lockFloat{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-6px) rotate(4deg);}}
 .pw-title{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,5.5vw,2.2rem);color:var(--gold2);margin-bottom:.12rem;}
 .pw-sub{font-family:'Cinzel',serif;font-size:clamp(.36rem,1.4vw,.44rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(244,167,185,.22);margin-bottom:1.2rem;}
-.pw-dots{display:flex;gap:.85rem;justify-content:center;margin-bottom:1.2rem;}
+
+/* Two-step tabs */
+.pw-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:1rem;}
+.pw-tab{font-family:'Cinzel',serif;font-size:clamp(.32rem,1.3vw,.42rem);letter-spacing:.22em;text-transform:uppercase;color:rgba(200,149,42,.3);padding:.35rem .8rem;border:1px solid rgba(200,149,42,.15);cursor:pointer;background:transparent;transition:all .3s;}
+.pw-tab.active{color:var(--gold2);border-color:rgba(200,149,42,.45);background:rgba(200,149,42,.08);}
+
+/* Step panels */
+.pw-step{display:none;flex-direction:column;align-items:center;gap:.8rem;width:100%;}
+.pw-step.active{display:flex;}
+
+/* Text input for name */
+.pw-text-input{width:100%;background:rgba(255,248,242,.05);border:1px solid rgba(200,149,42,.25);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(.9rem,3.5vw,1.1rem);padding:.75rem 1rem;text-align:center;outline:none;letter-spacing:.04em;transition:border .3s,box-shadow .3s;}
+.pw-text-input::placeholder{color:rgba(244,167,185,.2);font-style:italic;}
+.pw-text-input:focus{border-color:rgba(200,149,42,.5);box-shadow:0 0 0 3px rgba(200,149,42,.08);}
+.pw-text-btn{background:linear-gradient(135deg,rgba(176,31,66,.35),rgba(200,149,42,.15));border:1px solid rgba(200,149,42,.4);color:var(--gold2);font-family:'Cinzel',serif;font-size:clamp(.42rem,1.7vw,.52rem);letter-spacing:.25em;text-transform:uppercase;padding:.6rem 1.6rem;cursor:pointer;width:100%;min-height:44px;transition:all .3s;}
+.pw-text-btn:active{transform:scale(.96);}
+
+/* Numpad for birthday */
+.pw-dots{display:flex;gap:.85rem;justify-content:center;margin-bottom:.5rem;}
 .pw-dot{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(200,149,42,.28);background:transparent;transition:all .3s;}
 .pw-dot.filled{background:radial-gradient(circle,var(--gold2),var(--gold));border-color:var(--gold2);box-shadow:0 0 10px rgba(200,149,42,.7);}
 .pw-dot.error{background:radial-gradient(circle,#ff9090,#e83050);border-color:#ff8080;animation:shake .4s ease;}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(7px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
-.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.38rem;max-width:210px;margin:0 auto .8rem;}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.38rem;max-width:210px;margin:0 auto .5rem;}
 .num-btn{background:transparent;border:1px solid rgba(200,149,42,.12);color:rgba(255,248,242,.8);font-family:'Cinzel',serif;font-size:clamp(.9rem,3.5vw,1.1rem);font-weight:600;padding:.7rem;cursor:pointer;transition:all .18s;min-height:48px;border-radius:4px;}
 .num-btn:active{transform:scale(.86);background:rgba(200,149,42,.1);}
 .num-del{border-color:rgba(232,48,90,.16);color:rgba(244,167,185,.48);}
 .num-ok{border-color:rgba(200,149,42,.26);color:var(--gold2);}
-.pw-hint{font-family:'Playfair Display',serif;font-size:clamp(.6rem,2.5vw,.7rem);font-style:italic;color:rgba(244,167,185,.2);}
-.pw-error{font-size:.74rem;color:#ff8888;margin-top:.45rem;min-height:1.1em;font-style:italic;}
+
+.pw-hint{font-family:'Playfair Display',serif;font-size:clamp(.6rem,2.5vw,.7rem);font-style:italic;color:rgba(244,167,185,.25);line-height:1.65;}
+.pw-error{font-size:.74rem;color:#ff8888;margin-top:.35rem;min-height:1.1em;font-style:italic;}
 
 #slideshow{position:fixed;inset:0;z-index:400;background:rgba(4,0,8,.98);display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
 #slideshow.show{display:flex;}
@@ -201,7 +221,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
 .msg-hearts span:nth-child(2){animation-delay:.2s;font-size:.7rem;}
 .msg-hearts span:nth-child(3){animation-delay:.4s;}
 
-/* ═══ FLOWER WATERING SLIDE ═══ */
 .water-wrap{display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,2.2vw,1rem);max-width:min(340px,88vw);text-align:center;}
 .water-title{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,6.5vw,2.6rem);color:var(--cream);line-height:1.1;}
 .water-title span{color:var(--rose2);filter:drop-shadow(0 0 18px rgba(232,48,90,.6));}
@@ -352,41 +371,67 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
   </div>
 </section>
 
-<!-- PASSWORD -->
+<!-- PASSWORD — 2 bước: họ tên + ngày sinh -->
 <div id="pwOverlay">
   <div class="pw-box">
     <div class="pw-inner">
       <button class="pw-close" id="pwClose">ESC</button>
       <span class="pw-lock">🔐</span>
-      <div class="pw-title">Nhập Mật Khẩu</div>
+      <div class="pw-title">Xác Nhận Danh Tính</div>
       <div class="pw-sub">✦ chỉ Tien mới biết thui nhé ✦</div>
-      <div class="pw-dots">
-        <div class="pw-dot" id="d0"></div><div class="pw-dot" id="d1"></div>
-        <div class="pw-dot" id="d2"></div><div class="pw-dot" id="d3"></div>
+
+      <!-- Tabs -->
+      <div class="pw-tabs">
+        <button class="pw-tab active" id="tab1">Họ &amp; Tên</button>
+        <button class="pw-tab" id="tab2">Ngày Sinh</button>
       </div>
-      <div class="numpad">
-        <button class="num-btn" data-n="1">1</button>
-        <button class="num-btn" data-n="2">2</button>
-        <button class="num-btn" data-n="3">3</button>
-        <button class="num-btn" data-n="4">4</button>
-        <button class="num-btn" data-n="5">5</button>
-        <button class="num-btn" data-n="6">6</button>
-        <button class="num-btn" data-n="7">7</button>
-        <button class="num-btn" data-n="8">8</button>
-        <button class="num-btn" data-n="9">9</button>
-        <button class="num-btn num-del" id="numDel">⌫</button>
-        <button class="num-btn" data-n="0">0</button>
-        <button class="num-btn num-ok" id="numOk">✓</button>
+
+      <!-- Step 1: Họ và tên -->
+      <div class="pw-step active" id="step1">
+        <input
+          class="pw-text-input"
+          id="nameInput"
+          type="text"
+          placeholder="Nhập họ và tên..."
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+        />
+        <div class="pw-hint">Gợi ý: ghi họ và tên bà không dấu có cách 💕<br><span style="color:rgba(200,149,42,.22);font-size:.58rem;letter-spacing:.08em;">( ví dụ: Luu Thi My Tien )</span></div>
+        <button class="pw-text-btn" id="nameNextBtn">Tiếp Theo →</button>
+        <div class="pw-error" id="nameError"></div>
       </div>
-      <div class="pw-hint">Gợi ý: ngày sinh của bà đéyyy nhaa 💕</div>
-      <div class="pw-error" id="pwError"></div>
+
+      <!-- Step 2: Ngày sinh -->
+      <div class="pw-step" id="step2">
+        <div class="pw-dots">
+          <div class="pw-dot" id="d0"></div><div class="pw-dot" id="d1"></div>
+          <div class="pw-dot" id="d2"></div><div class="pw-dot" id="d3"></div>
+        </div>
+        <div class="numpad">
+          <button class="num-btn" data-n="1">1</button>
+          <button class="num-btn" data-n="2">2</button>
+          <button class="num-btn" data-n="3">3</button>
+          <button class="num-btn" data-n="4">4</button>
+          <button class="num-btn" data-n="5">5</button>
+          <button class="num-btn" data-n="6">6</button>
+          <button class="num-btn" data-n="7">7</button>
+          <button class="num-btn" data-n="8">8</button>
+          <button class="num-btn" data-n="9">9</button>
+          <button class="num-btn num-del" id="numDel">⌫</button>
+          <button class="num-btn" data-n="0">0</button>
+          <button class="num-btn num-ok" id="numOk">✓</button>
+        </div>
+        <div class="pw-hint">Gợi ý: ngày tháng sinh của bà 💕<br><span style="color:rgba(200,149,42,.22);font-size:.58rem;letter-spacing:.08em;">( ví dụ: ngày 27 tháng 03 → 2703 )</span></div>
+        <div class="pw-error" id="pwError"></div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <!-- SLIDESHOW -->
 <div id="slideshow">
-
   <!-- SLIDE 0: Clock -->
   <div class="slide active" id="s0">
     <div class="lc-wrap">
@@ -496,7 +541,7 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
     </div>
   </div>
 
-  <!-- SLIDE 5: Message -->
+  <!-- SLIDE 5 -->
   <div class="slide" id="s5">
     <div class="msg-wrap">
       <div class="msg-icon">🌹</div>
@@ -509,14 +554,12 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
     </div>
   </div>
 
-  <!-- SLIDE 6: FLOWER WATERING 🌱 -->
+  <!-- SLIDE 6: Flower Watering -->
   <div class="slide" id="s6">
     <div class="water-wrap">
       <div class="lc-badge">✦ Tặng Em Một Điều Nhỏ ✦</div>
       <div class="water-title">Tưới Hoa Cho <span>Tien</span> Nha 🌿</div>
       <div class="water-sub">Nhấn vào bông hoa 5 lần<br>để tưới và xem điều kỳ diệu 💧</div>
-
-      <!-- Flower pot -->
       <div class="flower-pot-scene" id="flowerScene" onclick="waterFlower()">
         <div class="water-drops" id="waterDrops"></div>
         <div class="flower-bloom" id="flowerBloom">🌹</div>
@@ -530,8 +573,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
         <div class="soil"></div>
         <div class="pot"></div>
       </div>
-
-      <!-- Progress dots -->
       <div class="water-progress">
         <div class="wp-dot" id="wp0"></div>
         <div class="wp-dot" id="wp1"></div>
@@ -556,7 +597,6 @@ body{background:var(--deep);font-family:'Cormorant Garamond',Georgia,serif;min-h
   </div>
 </div>
 
-<!-- Dots (8 slides now) -->
 <div id="slideDots">
   <div class="sdot on" id="sd0"></div><div class="sdot" id="sd1"></div>
   <div class="sdot" id="sd2"></div><div class="sdot" id="sd3"></div>
@@ -627,8 +667,7 @@ const melNotes=[
 function initAudio(){
   if(actx)return;
   actx=new(window.AudioContext||window.webkitAudioContext)();
-  masterGain=actx.createGain();
-  masterGain.gain.value=0.13;
+  masterGain=actx.createGain();masterGain.gain.value=0.13;
   masterGain.connect(actx.destination);
 }
 function playNote(freq,startT,durBeats,vol=0.18){
@@ -672,8 +711,7 @@ function playBass(freq,startT,durBeats,vol=0.09){
 }
 function scheduleMusic(){
   if(!musicOn||!actx)return;
-  const startT=actx.currentTime+0.05;
-  const totalDur=8*BAR;
+  const startT=actx.currentTime+0.05,totalDur=8*BAR;
   chords.forEach((ch,i)=>{
     playChordPad(ch,startT+i*BAR,4,0.05);
     playBass(ch[0],startT+i*BAR,4,0.09);
@@ -685,27 +723,21 @@ function scheduleMusic(){
 function startMusic(){
   initAudio();
   if(actx.state==='suspended')actx.resume();
-  musicOn=true;
-  document.getElementById('musicBtn').classList.remove('paused');
+  musicOn=true;document.getElementById('musicBtn').classList.remove('paused');
   scheduleMusic();
 }
 function stopMusic(){
-  musicOn=false;
-  clearTimeout(musicTimeout);
+  musicOn=false;clearTimeout(musicTimeout);
   document.getElementById('musicBtn').classList.add('paused');
 }
 document.getElementById('musicBtn').addEventListener('click',()=>{
   if(musicOn)stopMusic();else startMusic();
 });
-
-// AUTO-START music immediately on page load
 window.addEventListener('load',()=>{
-  // Try direct autoplay first
   try{
     initAudio();
     if(actx.state==='running'){startMusic();}
     else{
-      // If suspended, start on first interaction
       const go=()=>{
         if(!musicOn){
           if(actx.state==='suspended')actx.resume().then(()=>startMusic());
@@ -718,13 +750,7 @@ window.addEventListener('load',()=>{
       document.addEventListener('touchstart',go,{once:true,passive:true});
       document.addEventListener('click',go,{once:true});
       document.addEventListener('keydown',go,{once:true});
-      // Also attempt after short delay (some browsers allow after load)
-      setTimeout(()=>{
-        if(!musicOn){
-          initAudio();
-          if(actx&&actx.state==='running')startMusic();
-        }
-      },300);
+      setTimeout(()=>{if(!musicOn){initAudio();if(actx&&actx.state==='running')startMusic();}},300);
     }
   }catch(e){}
 });
@@ -773,8 +799,7 @@ function sparkle(x,y,n){
     s.style.cssText=`left:${x}px;top:${y}px;font-size:${.6+Math.random()*.5}rem;`;
     s.style.setProperty('--tx',Math.cos(a)*d+'px');
     s.style.setProperty('--ty',Math.sin(a)*d+'px');
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),950);
+    document.body.appendChild(s);setTimeout(()=>s.remove(),950);
   }
 }
 document.addEventListener('click',e=>sparkle(e.clientX,e.clientY,5));
@@ -786,8 +811,7 @@ function confetti(n){
   for(let i=0;i<n;i++){
     const c=document.createElement('div');c.className='conf-p';
     c.style.cssText=`left:${5+Math.random()*90}%;top:-10px;background:${cols[i%cols.length]};width:${3+Math.random()*6}px;height:${4+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};--cd:${1.5+Math.random()*2}s;--cdelay:${Math.random()*.6}s;--ctx:${-70+Math.random()*140}px;`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
+    document.body.appendChild(c);setTimeout(()=>c.remove(),4000);
   }
 }
 
@@ -801,23 +825,20 @@ function fireworks(){
         const p=document.createElement('div');p.className='fw-p';
         const ang=Math.random()*360,dist=70+Math.random()*130;
         p.style.cssText=`left:${cx};top:${cy};width:${5+Math.random()*5}px;height:${5+Math.random()*5}px;background:${cols[Math.floor(Math.random()*cols.length)]};--tx:${Math.cos(ang*Math.PI/180)*dist}px;--ty:${Math.sin(ang*Math.PI/180)*dist}px;animation-duration:${.7+Math.random()*.7}s;animation-delay:${Math.random()*.25}s;`;
-        document.body.appendChild(p);
-        setTimeout(()=>p.remove(),1800);
+        document.body.appendChild(p);setTimeout(()=>p.remove(),1800);
       }
     },b*280);
   }
 }
 
-// ─── SLIDESHOW (8 slides: 0-7) ───
+// ─── SLIDESHOW ───
 const SS=document.getElementById('slideshow');
 const DOTS=document.getElementById('slideDots');
-let cur=0;
-const TOTAL=8;
+let cur=0;const TOTAL=8;
 function goSlide(n){
   if(n<0||n>=TOTAL)return;
   const slides=document.querySelectorAll('.slide');
-  slides[cur].classList.remove('active');
-  slides[cur].classList.add('exit-left');
+  slides[cur].classList.remove('active');slides[cur].classList.add('exit-left');
   const prev=cur;cur=n;
   setTimeout(()=>slides[prev].classList.remove('exit-left'),600);
   slides[cur].classList.add('active');
@@ -826,27 +847,19 @@ function goSlide(n){
 }
 
 // ─── FLOWER WATERING ───
-let waterCount=0;
+let waterCount=0,waterDone=false;
 const WATER_MAX=5;
-let waterDone=false;
-
 function waterFlower(){
   if(waterDone)return;
   waterCount++;
-  // Update progress dot
   const dot=document.getElementById('wp'+(waterCount-1));
   if(dot)dot.classList.add('watered');
-  // Water drop animation
   spawnWaterDrops();
-  // Grow stem
   const stemH=[0,20,35,50,65,85];
-  const stem=document.getElementById('flowerStem');
-  stem.style.height=stemH[waterCount]+'px';
-  // Leaves appear
+  document.getElementById('flowerStem').style.height=stemH[waterCount]+'px';
   if(waterCount>=2)document.getElementById('leaf1').classList.add('show');
   if(waterCount>=3)document.getElementById('leaf2').classList.add('show');
   if(waterCount>=4)document.getElementById('leaf3').classList.add('show');
-  // Bloom at 5
   if(waterCount>=WATER_MAX){
     waterDone=true;
     setTimeout(()=>{
@@ -854,22 +867,17 @@ function waterFlower(){
       document.getElementById('waterCompleteMsg').classList.add('show');
       document.getElementById('waterHint').textContent='🌹 Hoa đã nở rồi!';
       confetti(40);
-      // Auto next after 2.5s
       setTimeout(()=>goSlide(7),2500);
     },400);
   } else {
     document.getElementById('waterHint').textContent='💧 Chạm vào hoa để tưới · '+waterCount+' / '+WATER_MAX;
   }
 }
-
 function spawnWaterDrops(){
-  const scene=document.getElementById('flowerScene');
   const drops=['💧','💦','🌊'];
-  const rect=scene.getBoundingClientRect();
   for(let i=0;i<4;i++){
     setTimeout(()=>{
-      const d=document.createElement('div');
-      d.className='wdrop';
+      const d=document.createElement('div');d.className='wdrop';
       d.textContent=drops[Math.floor(Math.random()*drops.length)];
       d.style.cssText=`left:${20+Math.random()*60}%;top:${10+Math.random()*30}%;font-size:${.7+Math.random()*.5}rem;animation-delay:${Math.random()*.2}s;`;
       document.getElementById('waterDrops').appendChild(d);
@@ -878,11 +886,50 @@ function spawnWaterDrops(){
   }
 }
 
-// ─── PASSWORD ───
-const SECRET='2703';
+// ─── PASSWORD (2 bước) ───
+// Bước 1: họ tên → "Luu Thi My Tien" (không phân biệt hoa thường, trim)
+// Bước 2: ngày sinh → "2703"
+const SECRET_NAME = 'luu thi my tien';
+const SECRET_BDAY = '2703';
+
 const pwOv=document.getElementById('pwOverlay');
 const ltOv=document.getElementById('letterOverlay');
 const fl=document.getElementById('flash');
+
+// --- Tab switching ---
+let currentStep = 1;
+document.getElementById('tab1').addEventListener('click',()=>switchStep(1));
+document.getElementById('tab2').addEventListener('click',()=>switchStep(2));
+
+function switchStep(n){
+  currentStep=n;
+  document.getElementById('step1').classList.toggle('active',n===1);
+  document.getElementById('step2').classList.toggle('active',n===2);
+  document.getElementById('tab1').classList.toggle('active',n===1);
+  document.getElementById('tab2').classList.toggle('active',n===2);
+  document.getElementById('nameError').textContent='';
+  document.getElementById('pwError').textContent='';
+}
+
+// --- Step 1: name check ---
+document.getElementById('nameNextBtn').addEventListener('click', checkName);
+document.getElementById('nameInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter') checkName();
+});
+function checkName(){
+  const val = document.getElementById('nameInput').value.trim().toLowerCase().replace(/\s+/g,' ');
+  if(val === SECRET_NAME){
+    document.getElementById('nameError').textContent='';
+    // switch to step 2
+    switchStep(2);
+    pw=''; updDots();
+  } else {
+    document.getElementById('nameError').textContent='Sai rồi bà ơi, nhớ không dấu có cách nha 🥺';
+    document.getElementById('nameInput').select();
+  }
+}
+
+// --- Step 2: birthday numpad ---
 const pwDots=[0,1,2,3].map(i=>document.getElementById('d'+i));
 let pw='';
 function updDots(){pwDots.forEach((d,i)=>{d.classList.remove('filled','error');if(i<pw.length)d.classList.add('filled');});}
@@ -891,14 +938,16 @@ function errShake(msg){
   document.getElementById('pwError').textContent=msg;
   setTimeout(()=>{pwDots.forEach(d=>d.classList.remove('error'));pw='';updDots();},750);
 }
-function chkPw(){
-  if(pw.length<SECRET.length){document.getElementById('pwError').textContent='Còn thiếu số rồi bà ơi 💕';return;}
-  if(pw===SECRET){
-    fl.classList.add('go');
-    setTimeout(()=>fl.classList.remove('go'),800);
+function chkBday(){
+  if(pw.length<SECRET_BDAY.length){document.getElementById('pwError').textContent='Còn thiếu số rồi 💕';return;}
+  if(pw===SECRET_BDAY){
+    fl.classList.add('go');setTimeout(()=>fl.classList.remove('go'),800);
     pwOv.classList.remove('show');
     pw='';updDots();
     document.getElementById('pwError').textContent='';
+    document.getElementById('nameInput').value='';
+    // reset to step 1 for next time
+    switchStep(1);
     cur=0;
     document.querySelectorAll('.slide').forEach((s,i)=>{s.classList.remove('active','exit-left');if(i===0)s.classList.add('active');});
     document.querySelectorAll('.sdot').forEach((d,i)=>d.classList.toggle('on',i===0));
@@ -916,22 +965,40 @@ function chkPw(){
     errShake('Sai rồi bà ơi, thử lại nha 🥺');
   }
 }
-document.getElementById('openBtn').addEventListener('click',()=>{pw='';updDots();document.getElementById('pwError').textContent='';pwOv.classList.add('show');});
-document.getElementById('pwClose').addEventListener('click',()=>{pwOv.classList.remove('show');pw='';updDots();});
-pwOv.addEventListener('pointerdown',e=>{if(e.target===pwOv){pwOv.classList.remove('show');pw='';updDots();}});
+
 document.querySelectorAll('.num-btn[data-n]').forEach(b=>b.addEventListener('click',()=>{
-  if(pw.length>=SECRET.length)return;
+  if(pw.length>=SECRET_BDAY.length)return;
   pw+=b.dataset.n;document.getElementById('pwError').textContent='';updDots();
-  if(pw.length===SECRET.length)setTimeout(chkPw,200);
+  if(pw.length===SECRET_BDAY.length)setTimeout(chkBday,200);
 }));
 document.getElementById('numDel').addEventListener('click',()=>{pw=pw.slice(0,-1);updDots();document.getElementById('pwError').textContent='';});
-document.getElementById('numOk').addEventListener('click',chkPw);
+document.getElementById('numOk').addEventListener('click',chkBday);
+
+// Open/close overlay
+document.getElementById('openBtn').addEventListener('click',()=>{
+  pw='';updDots();
+  document.getElementById('pwError').textContent='';
+  document.getElementById('nameInput').value='';
+  document.getElementById('nameError').textContent='';
+  switchStep(1);
+  pwOv.classList.add('show');
+});
+document.getElementById('pwClose').addEventListener('click',()=>{pwOv.classList.remove('show');pw='';updDots();switchStep(1);});
+pwOv.addEventListener('pointerdown',e=>{if(e.target===pwOv){pwOv.classList.remove('show');pw='';updDots();switchStep(1);}});
+
+// Keyboard support
 document.addEventListener('keydown',e=>{
   if(!pwOv.classList.contains('show'))return;
-  if(e.key>='0'&&e.key<='9'&&pw.length<SECRET.length){pw+=e.key;updDots();document.getElementById('pwError').textContent='';if(pw.length===SECRET.length)setTimeout(chkPw,200);}
+  if(currentStep===1){
+    if(e.key==='Enter')checkName();
+    if(e.key==='Escape'){pwOv.classList.remove('show');pw='';updDots();switchStep(1);}
+    return;
+  }
+  // step 2
+  if(e.key>='0'&&e.key<='9'&&pw.length<SECRET_BDAY.length){pw+=e.key;updDots();document.getElementById('pwError').textContent='';if(pw.length===SECRET_BDAY.length)setTimeout(chkBday,200);}
   else if(e.key==='Backspace'){pw=pw.slice(0,-1);updDots();}
-  else if(e.key==='Enter')chkPw();
-  else if(e.key==='Escape'){pwOv.classList.remove('show');pw='';updDots();}
+  else if(e.key==='Enter')chkBday();
+  else if(e.key==='Escape'){pwOv.classList.remove('show');pw='';updDots();switchStep(1);}
 });
 
 // ─── LETTER ───
